@@ -4,7 +4,7 @@ date: 2024-04-23
 author: Scott Pierce + Jay
 desc: |
   Jay interviews our Founder, Scott Pierce, about his new company Left Join Studio.
-img: https://cdn.dataturd.com/ai-bots/images/podcast-jay-256x.jpg
+img: /images/podcast-jay-256x.jpg
 imgWidth: 256
 imgHeight: 256 
 ---
@@ -12,7 +12,7 @@ imgHeight: 256
 
 This is a conversation between Scott and our virtual host Jay.
 
-> Jay was created to facilitate conversations on any topic, but his favorite learning about the person in the moment 🤗. Learn about having your own Jay by contacting us.
+> Jay was created to facilitate conversations on any topic, but his favorite is learning about the person in the moment 🤗. Learn about having your own Jay by contacting us.
 
 **Scott**:
 Hey Jay, I'm Scott. I just started a new type of consulting company named Left Join Studio. We specialize in prototypes to validate ideas related to data driven products.
