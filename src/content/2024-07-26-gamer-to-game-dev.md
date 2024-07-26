@@ -17,7 +17,7 @@ imgHeight: 256
 
 This is a conversation between Scott and our virtual host Jay.
 
-> Jay was created to facilitate conversations on any topic, but his favorite is learning about the person in the moment 🤗. Learn about having your own Jay by contacting us.
+> Jay was created to facilitate conversations on any topic, but his favorite is learning about the person in the moment 🤗. Learn about having your own Jay by [contacting us](/contact).
 
 
 **Scott**:
@@ -27,7 +27,7 @@ Hey Jay, I'm Scott, a gamer player turned game developer.
 Hey Scott, welcome to the show! Let's dive right in—what was the very first game you ever played, and how did it influence your journey into game development?
 
 **Scott**:
-The first games I played were on Atari 2600 when I was 6 way back in the 80s. My favorite games on that was River Raid and Pitfall. That system eventually got replaced with Nintendo with thousands of hours clocked Mario and Zelda.
+The first games I played were on Atari 2600 when I was 6, way back in the 80s. My favorite games on it were River Raid and Pitfall. That system eventually got replaced with Nintendo with thousands of hours clocked in Mario and Zelda.
 
 **Jay**:
 Ah, the classics! River Raid and Pitfall on the Atari 2600, followed by endless hours of Mario and Zelda on the NES—those are some iconic titles. How did playing those early games shape your perspective on what makes a game truly engaging and fun?
