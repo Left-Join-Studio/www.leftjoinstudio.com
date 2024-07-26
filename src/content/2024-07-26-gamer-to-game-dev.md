@@ -3,7 +3,12 @@ title: "Interview with Scott: Gamer to Game Dev"
 date: 2024-07-26
 author: Scott Pierce + Jay
 desc: |
-  Jay interviews Scott about how gaming influenced his development.
+  Discover how one gamer's journey from Atari 2600 to AI wizard
+  reveals the secret to creating engaging experiences that last. Meet
+  Scott, who's mastered the art of simplicity in game development and
+  now applies it to making AI tools accessible to everyone. Join
+  their fascinating conversation with Jay as they explore the intersection of
+  creativity, technology, and human connection.
 img: /images/gamer-to-butterfly.jpg
 imgWidth: 256
 imgHeight: 256 
