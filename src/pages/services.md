@@ -4,25 +4,19 @@ title: Services
 ---
 # Services
 
-## Advisory Chat
-
-Get any of these questions or questions like these answered within your domain:
-
-- How can we achieve this result given these constraints?
-- How will AI impact my industry?
-- What are the potential risks of implementing AI in my products?
-- How can we optimize trading to achieve less overhead?
-- What are the best development practices in our industry?
-- How can we improve X to enhance Y?
-
-At the end of advisory session, you'll have increased understanding of how technology can accelerate your business and a near future action plan.
-
 ## Project Discovery
 
 - Identify potential challenges and opportunities
 - Development strategic roadmap for project execution
 - Recommendations for optimal project management and resource allocation
 - Detailed project scope and timeline planning
+
+## Project Prototype
+
+- Build a working prototype with core functionalities
+- Ensure technical feasibility and scalability
+- Work closely with stakeholders to ensure value
+- Provide documentation and smooth handover
 
 ## Automation
 
