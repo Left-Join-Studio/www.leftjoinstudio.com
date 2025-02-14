@@ -1,5 +1,5 @@
 ---
-layout: '@layouts/page'
+layout: '@layouts/prose'
 title: Services
 ---
 # Services
@@ -33,6 +33,8 @@ title: Services
 - Customized training modules based on your organization's specific needs
 - Expert guidance on industry-standard tools and techniques
 - Ongoing support and mentoring for continuous professional growth
+
+<a class="btn btn-primary w-full" href="/training">Training Packages</a>
 
 <hr />
 

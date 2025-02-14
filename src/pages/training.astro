@@ -1,0 +1,91 @@
+---
+import Page from "@layouts/page";
+import ContactForm from "@components/utilities/ContactForm";
+import Check from "@components/utilities/Check";
+const base_class = "rounded-xl shadow bg-base-100 overflow-y-auto overscroll-contain p-8"
+---
+<style>
+    .bucket {
+        @apply p-4 rounded-lg border-2 bg-secondary min-h-[20em]
+    }
+</style>
+
+<Page title="Training">
+<section class="flex items-center justify-center mx-auto sm:max-w-4xl">
+    <div class="min-p-4 p-[5vw] flex flex-col justify-center items-center text-base h-100vh mx-auto gap-8" id="pricing">
+        <h3 class="text-2xl sm:text-4xl font-semibold text-center flex justify-center">Training Packages</h3>
+        <p class="text-center flex justify-center">
+            Personalized training sessions tailored to meet your specific business objectives in data automation, storage, and analysis.
+            Our expert coach is well-versed in all major programming languages and data tools,
+            ensuring that we can provide you with the exact support needed from day one.
+        </p>
+        <div class="isolate mx-auto grid grid-cols-1 gap-8 md:grid-cols-2">
+            <div class="ring-1 ring-gray-200 rounded-3xl p-8 xl:p-10">
+                <div class="flex items-center justify-between gap-x-4">
+                    <h3 id="tier-standard" class="text-gray-900 text-2xl font-semibold leading-8">Power Hour</h3>
+                </div>
+                <p class="mt-4 text-base leading-6 text-gray-600">
+                    A one-hour session to kickstart your understanding of AI and data automation.
+                    We'll help you blow away any preconceptions about learning these skills, ensuring you leave with a clear roadmap for success.
+                </p>
+                <p class="mt-6 flex items-baseline gap-x-1">
+                    <span class="line-through text-xl font-sans text-gray-500/70">$1000</span>
+                    <div class="text-5xl font-bold tracking-tight text-gray-900">$499</div>
+                </p>
+                <a href=""
+                    aria-describedby="tier-standard"
+                    class="text-primary ring-1 ring-inset ring-gray-200 hover:ring-gray-300 mt-6 block rounded-md py-2 px-3 text-center text-base font-medium leading-6
+                           focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600"
+                    target="_blank">Start Learning</a>
+                <ul role="list" class="mt-8 space-y-3 text-sm leading-6 text-gray-600 xl:mt-10 *:flex *:gap-x-3">
+                    <li>
+                        <Check/> Discover your goals
+                    </li>
+                    <li>
+                        <Check/> Example project with your data
+                    </li>
+                    <li>
+                        <Check/> Next steps
+                    </li>
+                </ul>
+            </div>
+            <div class="ring-4 ring-primary rounded-3xl p-8 xl:p-10">
+                <div class="flex items-center justify-between gap-x-4">
+                    <h3 id="tier-extended" class="text-primary text-2xl font-semibold leading-8">LET'S GO!!!</h3>
+                </div>
+                <p class="mt-4 text-base leading-6 text-gray-600">
+                    An immersive program consisting of eight in-depth sessions and hands-on project work.
+                    Each session we'll create a new Python to add to your toolbelt.
+                    By the end of this package, you'll gain confidence to tackle more complex projects challenges.
+                </p>
+                <p class="mt-6 flex items-baseline gap-x-1">
+                    <span class="line-through text-xl font-sans text-gray-500/70">$4,000</span>
+                    <div class="text-5xl font-bold tracking-tight text-gray-900">$1,999</div>
+                </p>
+                <a href=""
+                    aria-describedby="tier-extended"
+                    class="bg-primary text-white shadow-sm hover:bg-primary-500 mt-6 block rounded-md py-2 px-3 text-center text-base font-medium leading-6
+                           focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600"
+                    target="_blank">Start Learning</a>
+                <ul role="list" class="mt-8 space-y-3 text-sm leading-6 text-gray-600 xl:mt-10 *:flex *:gap-x-3">
+                    <li>
+                        <Check/> Power Hour plus&hellip;
+                    </li>
+                    <li>
+                        <Check/> Start a relevent project
+                    </li>
+                    <li>
+                        <Check/> Complete a project
+                    </li>
+                    <li>
+                        <Check/> Repeat
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <p class="text-center flex justify-center">
+            Each project iteration will add to your experience and knowledge, ensuring you're ready to tackle any data challenge.
+        </p>
+    </div>
+</section>
+</Page>

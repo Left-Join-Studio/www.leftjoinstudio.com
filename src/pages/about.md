@@ -1,5 +1,5 @@
 ---
-layout: '@layouts/page'
+layout: '@layouts/prose'
 title: About Us
 ---
 ## About Us

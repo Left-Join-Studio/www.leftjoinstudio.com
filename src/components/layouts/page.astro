@@ -2,13 +2,12 @@
 import "../../style/tailwind.css"
 import Navbar from "@components/Navbar";
 import Footer from "@components/Footer";
-import ThemeChange from "@components/ThemeChange";
 import Head from '@components/Head'
 const {title} = Astro.props;
 const {desc} = Astro.props;
 const {img} = Astro.props;
 ---
-<html lang="en">
+<html lang="en" data-theme="cupcake">
 <Head
 	title={title}
 	desc={desc}
@@ -20,15 +19,11 @@ const {img} = Astro.props;
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 </Head>
 <body class="flex flex-col items-center h-screen h-[100svh]">
-	<div class="w-full max-w-3xl flex-grow">
-		<Navbar>
-			<ThemeChange />
-		</Navbar>
-		<div class="p-4 pb-10">
-			<div class="prose lg:prose-lg">
-				<slot />
-			</div>
-		</div>
+	<div class="w-full lg:max-w-4xl flex-grow">
+        <div class="lg:max-w-4xl">
+            <Navbar />
+        </div>
+        <slot />
 	</div>
 	<Footer />
 </body>
