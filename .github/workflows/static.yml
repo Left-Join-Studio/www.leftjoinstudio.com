@@ -19,6 +19,9 @@ jobs:
       - name: Build project
         run: npm run build
 
+      - name: Create .nojekyll file
+        run: echo "" > .nojekyll
+
       - name: Upload static content
         uses: actions/upload-pages-artifact@v1
 
