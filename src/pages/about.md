@@ -1,26 +1,32 @@
 ---
 layout: '@layouts/prose'
-title: About Us
+title: About Left Join Studio
 ---
-## About Us
 
-#### Our Story
+## About Left Join Studio
 
-Welcome to Left Join Studio, where innovation meets efficiency.
+Left Join Studio was founded on a simple observation: traditional consulting often prioritizes billable hours over business outcomes. Projects stretch across months, costs balloon, and by the time a solution is delivered, the original problem may have evolved.
 
-Left Join Studio was born out of a personal frustration with the traditional hourly billing model that dominates the software development industry. After spending 25 years honing my skills and becoming a grand master at rapid prototyping, I found myself in a paradox. Despite being able to create functional prototypes in just a few sittings, clients were reluctant to pay for the true value of my expertise. Instead, they focused on the minimal hours it took me to deliver results.
+We built Left Join Studio to do things differently.
 
-In contrast, traditional consulting firms often stretch projects out with extensive upfront design, documentation, and multiple roles with varying hourly rates. This approach not only inflates costs but also delays the realization of whether an idea is worth pursuing.
+### Our Approach
 
-I knew there had to be a better way. A way that respects the value of experience and the power of intuition. That’s why I founded Left Join Studio, Inc.
+Left Join Studio specializes in rapid prototyping and idea validation for data-driven products. Instead of lengthy discovery phases and extensive documentation, we focus on getting working code in front of stakeholders fast.
 
-At Left Join Studio, we believe in delivering high-quality, efficient solutions without unnecessary bloat. Our approach is straightforward:
+**Prototype First.** We believe the fastest path to understanding is a working demo. Before committing to full development, we validate concepts with functional prototypes that stakeholders can see, touch, and evaluate.
 
-1. **Efficiency and Expertise**: With decades of experience, we cut through the noise and get straight to the heart of your project. 
-2. **Value-Driven Pricing**: We offer transparent, value-based pricing that reflects the true worth of our expertise, not just the hours spent.
-3. **Rapid Prototyping**: We quickly turn your ideas into tangible prototypes, so you can validate concepts and move forward with confidence.
-4. **Client Collaboration**: We work closely with you, ensuring that your vision is realized effectively and efficiently.
+**Value Over Hours.** Our pricing reflects outcomes, not time spent. When you work with us, you pay for results—validated prototypes, working automations, and clear paths forward.
 
-Our mission is to empower businesses to innovate without the traditional constraints of time and cost. We’re here to make your ideas a reality, faster and smarter.
+**Deep Expertise.** With over 25 years of experience in software development, data products, and automation, we bring hard-won knowledge to every engagement.
 
-Join us at Left Join Studio, where your success is our success.
+### What We Believe
+
+- **Start small, validate fast.** It's better to discover a concept doesn't work in week one than month six.
+- **Working code beats documentation.** A prototype worth a thousand slides.
+- **Simplicity wins.** The best solutions are often the simplest ones.
+
+### Ready to Work Together?
+
+We partner with organizations ready to move fast and validate ideas before making large investments.
+
+<a class="btn btn-primary" href="/contact">Start a Conversation</a>

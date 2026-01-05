@@ -3,16 +3,16 @@ import type { Post } from '@data/post';
 const post: Post = Astro.props.post
 ---
 
-<div class="py-6 flex flex-row-reverse gap-6 mx-auto md:gap-10 md:max-w-2xl items-start">
+<div class="bg-whiteboard rounded-lg overflow-hidden hover:shadow-md transition-shadow">
 	{post.img &&
-		<a href={`/${post.slug}`} class="shrink-0">
-			<img src={post.img} alt={post.title} width="160" height="160" class="w-20 h-20 md:w-40 md:h-40 rounded bg-base-200 object-cover" />
+		<a href={`/${post.slug}`} class="block">
+			<img src={post.img} alt={post.title} width="400" height="200" class="w-full h-40 object-cover" />
 		</a>
 	}
-	<div class="flex flex-col gap-4">
-		<h2 class="text-2xl font-bold">
-			<a class="hover:underline" href={`/${post.slug}`}>{post.title}</a>
-		</h2>
-		<p class="text-sm text-base-content/70">{post.desc}</p>
+	<div class="p-4">
+		<h3 class="text-lg font-semibold text-charcoal mb-2">
+			<a class="hover:text-signal transition-colors" href={`/${post.slug}`}>{post.title}</a>
+		</h3>
+		<p class="text-pencil text-sm line-clamp-2">{post.desc}</p>
 	</div>
 </div>

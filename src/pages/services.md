@@ -2,40 +2,49 @@
 layout: '@layouts/prose'
 title: Services
 ---
-# Services
 
-## Project Discovery
+## Services
+
+Left Join Studio offers focused consulting services designed to validate ideas and deliver results quickly.
+
+### Project Discovery
+
+Before writing code, we help you understand what needs to be built and why.
 
 - Identify potential challenges and opportunities
-- Development strategic roadmap for project execution
-- Recommendations for optimal project management and resource allocation
-- Detailed project scope and timeline planning
+- Develop strategic roadmaps for project execution
+- Provide recommendations for resource allocation
+- Create detailed project scope and timeline planning
 
-## Project Prototype
+### Rapid Prototyping
 
-- Build a working prototype with core functionalities
-- Ensure technical feasibility and scalability
-- Work closely with stakeholders to ensure value
-- Provide documentation and smooth handover
+We build working prototypes that prove concepts before you commit to full development.
 
-## Automation
+- Functional prototypes with core features
+- Technical feasibility and scalability validation
+- Close collaboration with stakeholders
+- Documentation and smooth handover
 
-- Customized automation solutions tailored to your specific business needs
-- Streamlining of repetitive tasks and processes to improve efficiency
-- Integration of automation tools and technologies for seamless operations
+### Automation Solutions
+
+We streamline operations by automating repetitive tasks and processes.
+
+- Custom automation tailored to your business needs
+- Integration with existing tools and workflows
 - Automation strategy development and implementation
-- Ongoing support and maintenance for automated systems
+- Ongoing support and maintenance
 
-## Trainer
+### Training & Workshops
 
-- Tailored training programs for your team's skill development
-- Hands-on workshops and practical exercises for effective learning
-- Customized training modules based on your organization's specific needs
-- Expert guidance on industry-standard tools and techniques
-- Ongoing support and mentoring for continuous professional growth
+We help teams level up their skills in data automation and modern development practices.
 
-<a class="btn btn-primary w-full" href="/training">Training Packages</a>
+- Tailored training programs for team skill development
+- Hands-on workshops and practical exercises
+- Expert guidance on industry-standard tools
+- Ongoing mentoring for continuous growth
 
-<hr />
+<a class="btn btn-primary w-full" href="/training">View Training Packages</a>
 
-<a class="btn btn-primary w-full" href="/contact">Contact Us</a>
+<hr class="my-8" />
+
+<a class="btn btn-secondary w-full" href="/contact">Contact Us</a>

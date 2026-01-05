@@ -1,12 +1,16 @@
 ---
-import ContactForm from '@components/utilities/ContactForm'
 ---
 
-<footer class="footer footer-center p-10 bg-base-200 text-base-content">
-  <aside>
-    <p class="font-bold">
-        Left Join Studio, Inc. <br/> Solving problems since 1998
-    </p> 
-    <p>&copy; {(new Date()).getFullYear()} - All right reserved</p>
-  </aside> 
+<footer class="w-full border-t border-charcoal/10 bg-whiteboard">
+  <div class="max-w-5xl mx-auto px-6 py-8">
+    <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+      <div class="text-center md:text-left">
+        <p class="font-semibold text-charcoal">Left Join Studio, Inc<span class="text-signal">.</span></p>
+        <p class="text-pencil text-sm">Rapid prototyping & data solutions since 1998</p>
+      </div>
+      <div class="text-pencil text-sm">
+        &copy; {(new Date()).getFullYear()} Left Join Studio, Inc. All rights reserved.
+      </div>
+    </div>
+  </div>
 </footer>
