@@ -8,17 +8,27 @@ module.exports = {
     extend: {
       fontFamily: {
         'sans': ['"Inter"', 'system-ui', 'sans-serif'],
-        'mono': ['"JetBrains Mono"', 'monospace']
+        'display': ['"Plus Jakarta Sans"', '"Inter"', 'system-ui', 'sans-serif']
       },
       colors: {
-        // Clarity Stack (Light Mode) - LJS Corporate
-        'paper': '#FFFEF9',
-        'whiteboard': '#F7F6F3',
+        // Light, warm surfaces
+        'paper': '#FFFDF9',
+        'whiteboard': '#FAF5EC',
+        'tint': '#FDEEE2',
         'charcoal': '#2C2C2C',
-        'pencil': '#6B6B6B',
-        // Signal Orange (Primary Accent)
+        'pencil': '#5F5B56',
+        // Warm near-black, for the footer and the one featured card
+        'ink': '#1F1B18',
+        'ink-line': '#3A342F',
+        'ink-text': '#EDE8E1',
+        'ink-muted': '#B5ADA4',
+        'go': '#2E9E5B',
+        // Signal Orange (the only accent)
         'signal': '#E85D00',
-        'signal-muted': '#D4722A',
+        // Dark enough for body-size text on paper
+        'signal-ink': '#B84A00',
+        // Light enough for text on ink
+        'signal-soft': '#FFB07A',
         // Status Colors
         'proceed': '#3D7A4A',
         'modify': '#E85D00',
@@ -27,25 +37,29 @@ module.exports = {
     }
   },
   daisyui: {
+    logs: false,
     themes: [
       {
         ljs: {
           'primary': '#E85D00',           // Signal Orange
-          'primary-content': '#FFFEF9',   // Paper White text on primary
+          'primary-content': '#1A1A1A',   // Ink text on primary
           'secondary': '#2C2C2C',         // Charcoal
           'secondary-content': '#FFFEF9', // Paper White text on secondary
           'accent': '#3D7A4A',            // Proceed green
           'accent-content': '#FFFEF9',
           'neutral': '#6B6B6B',           // Pencil Gray
           'neutral-content': '#FFFEF9',
-          'base-100': '#FFFEF9',          // Paper White
-          'base-200': '#F7F6F3',          // Whiteboard
+          'base-100': '#FFFDF9',          // Paper White
+          'base-200': '#FAF5EC',          // Whiteboard
           'base-300': '#E8E7E3',          // Slightly darker
           'base-content': '#2C2C2C',      // Charcoal
           'info': '#3B82F6',
           'success': '#3D7A4A',           // Proceed
           'warning': '#E85D00',           // Signal Orange
           'error': '#CC3333',             // Stop
+          '--rounded-box': '18px',
+          '--rounded-btn': '10px',
+          '--rounded-badge': '999px',
         }
       }
     ]

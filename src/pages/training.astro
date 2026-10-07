@@ -1,83 +1,56 @@
 ---
 import Page from "@layouts/page";
-import Check from "@components/utilities/Check";
+import PageHero from "@components/PageHero";
+import CtaBand from "@components/sections/CtaBand";
+
+const packages = [
+	{
+		name: 'Power Hour',
+		price: '$499',
+		unit: 'one session',
+		body: 'A one-hour session to get your bearings on AI and data automation. You leave with a clear plan for what to do next.',
+		points: ['We find out what you\'re after', 'An example project built with your data', 'Clear next steps'],
+		featured: false,
+	},
+	{
+		name: 'Let\'s Go',
+		price: '$1,999',
+		unit: 'eight sessions',
+		body: 'Eight in-depth sessions with hands-on project work between them. You build real tools and finish able to take on the next one alone.',
+		points: ['Everything in Power Hour', 'A project that matters to your business', 'A finished, working solution', 'A second round on a new problem'],
+		featured: true,
+	},
+]
 ---
+<Page title="Training - Left Join Studio" desc="Hands-on AI and data automation training from Left Join Studio. One session or eight, using your own data, at a posted price.">
+	<PageHero label="Training" title="Learn it on your own data, from someone who does it for a living." lead="Sessions are one-on-one or with your team, shaped to what your business is trying to get done. The price is the price." />
 
-<Page title="Training - Left Join Studio" desc="Personalized training sessions in data automation, AI tools, and modern development practices.">
-<section class="px-6 py-12">
-    <div class="max-w-4xl mx-auto">
-        <div class="text-center mb-12">
-            <h1 class="text-3xl md:text-4xl font-bold text-charcoal mb-4">Training Packages</h1>
-            <p class="text-pencil max-w-2xl mx-auto">
-                Personalized training sessions tailored to meet your specific business objectives in data automation, storage, and analysis.
-                Our expert guidance covers all major programming languages and data tools.
-            </p>
-        </div>
+	<section class="bg-paper">
+		<div class="wrap section">
+			<div class="grid md:grid-cols-2 gap-6">
+				{packages.map(p => (
+					<div class:list={["p-8 md:p-10 flex flex-col reveal", p.featured ? "on-dark bg-ink text-paper rounded-[18px] shadow-[0_24px_48px_-24px_rgba(31,27,24,0.6)]" : "panel"]}>
+						<div class="flex items-center justify-between gap-4">
+							<h2 class="font-bold tracking-tight text-[30px] leading-none">{p.name}</h2>
+							{p.featured && <span class="inline-block bg-signal text-ink font-semibold text-[13px] rounded-full px-3 py-1.5 whitespace-nowrap">Most thorough</span>}
+						</div>
+						<p class:list={["mt-5", p.featured ? "text-ink-muted" : "text-pencil"]}>{p.body}</p>
+						<p class="mt-8 flex items-baseline gap-3">
+							<span class="font-display font-extrabold text-[48px] leading-none tracking-tight">{p.price}</span>
+							<span class:list={["text-[15px] font-medium", p.featured ? "text-ink-muted" : "text-pencil"]}>{p.unit}</span>
+						</p>
+						<ul class="mt-8 space-y-3 text-[15px] flex-grow">
+							{p.points.map(pt => (
+								<li class="flex gap-3"><span class="tick" aria-hidden="true"></span><span>{pt}</span></li>
+							))}
+						</ul>
+						<a href="/contact" class:list={["cta mt-10", p.featured ? "cta-primary" : "cta-ghost"]}>Start learning <span class="arrow">&rarr;</span></a>
+					</div>
+				))}
+			</div>
+			<p class="mt-8 text-pencil max-w-2xl reveal">Each project builds on the last one, so by the end you're ready for the next data problem without us.</p>
+		</div>
+	</section>
 
-        <div class="grid md:grid-cols-2 gap-8">
-            <!-- Power Hour -->
-            <div class="border-2 border-charcoal/10 rounded-xl p-8 hover:border-signal/30 transition-colors">
-                <h3 class="text-2xl font-semibold text-charcoal mb-4">Power Hour</h3>
-                <p class="text-pencil mb-6">
-                    A one-hour session to kickstart your understanding of AI and data automation.
-                    Leave with a clear roadmap for success.
-                </p>
-                <div class="mb-6">
-                    <span class="line-through text-pencil/70 text-lg">$1000</span>
-                    <span class="text-4xl font-bold text-charcoal ml-2">$499</span>
-                </div>
-                <a href="/contact"
-                   class="btn btn-outline border-charcoal text-charcoal hover:bg-charcoal hover:text-paper w-full mb-6">
-                    Start Learning
-                </a>
-                <ul class="space-y-3 text-pencil">
-                    <li class="flex gap-3 items-start">
-                        <Check /> <span>Discover your goals</span>
-                    </li>
-                    <li class="flex gap-3 items-start">
-                        <Check /> <span>Example project with your data</span>
-                    </li>
-                    <li class="flex gap-3 items-start">
-                        <Check /> <span>Clear next steps</span>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- LET'S GO -->
-            <div class="border-2 border-signal rounded-xl p-8 bg-signal/5">
-                <h3 class="text-2xl font-semibold text-signal mb-4">LET'S GO</h3>
-                <p class="text-pencil mb-6">
-                    An immersive program of eight in-depth sessions and hands-on project work.
-                    Build real tools and gain confidence to tackle complex challenges.
-                </p>
-                <div class="mb-6">
-                    <span class="line-through text-pencil/70 text-lg">$4,000</span>
-                    <span class="text-4xl font-bold text-charcoal ml-2">$1,999</span>
-                </div>
-                <a href="/contact"
-                   class="btn btn-primary w-full mb-6">
-                    Start Learning
-                </a>
-                <ul class="space-y-3 text-pencil">
-                    <li class="flex gap-3 items-start">
-                        <Check /> <span>Everything in Power Hour, plus...</span>
-                    </li>
-                    <li class="flex gap-3 items-start">
-                        <Check /> <span>Start a relevant project</span>
-                    </li>
-                    <li class="flex gap-3 items-start">
-                        <Check /> <span>Complete a working solution</span>
-                    </li>
-                    <li class="flex gap-3 items-start">
-                        <Check /> <span>Repeat with new challenges</span>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-        <p class="text-center text-pencil mt-8">
-            Each project iteration builds on the last, ensuring you're ready to tackle any data challenge.
-        </p>
-    </div>
-</section>
+	<CtaBand title="Not sure which one fits?" body="Tell us what your team is trying to do. We'll say which package makes sense, or whether you need training at all." />
 </Page>

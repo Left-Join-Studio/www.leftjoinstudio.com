@@ -1,0 +1,8 @@
+---
+// Set in type instead of the 211px PNG, so it stays sharp on a booth monitor.
+const { dark = false } = Astro.props;
+---
+<span class="inline-flex items-baseline font-display leading-none select-none" aria-label="Left Join Studio">
+  <span class:list={["font-extrabold tracking-tight text-[20px]", dark ? "text-paper" : "text-charcoal"]} aria-hidden="true">LEFT<span class="text-signal">JOIN</span></span>
+  <span class:list={["font-medium text-[20px] ml-[5px] tracking-tight", dark ? "text-ink-muted" : "text-pencil"]} aria-hidden="true">studio</span>
+</span>

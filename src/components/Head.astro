@@ -18,6 +18,8 @@ if(!desc) {
 if(!img) {
   img = Astro.site+'card.png'
 }
+// Each page shares as itself, not as the home page
+const pageUrl = new URL(Astro.url.pathname, Astro.site).href
 ---
 
 <head>
@@ -45,8 +47,9 @@ if(!img) {
 	{desc && <meta property="og:description" content={desc} />}
 	<meta property="og:image" content={img} />
 	{title && <meta property="og:image:alt" content={title} />}
-	{title && <meta property="og:site_name" content={title} />}
-	<meta property="og:type" content="object" />
-	<meta property="og:url" content={Astro.site} />
+	<meta property="og:site_name" content={siteInfo.siteName} />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content={pageUrl} />
+	<link rel="canonical" href={pageUrl} />
 	<slot/>
 </head>

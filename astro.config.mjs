@@ -27,5 +27,5 @@ export default defineConfig({
   //   }]
   // },
   site: 'https://www.leftjoinstudio.com/',
-  integrations: [sitemap(), tailwind()]
+  integrations: [sitemap({ filter: (page) => !page.includes('/thanks') }), tailwind()]
 });

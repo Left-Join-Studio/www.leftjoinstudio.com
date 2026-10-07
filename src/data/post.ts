@@ -35,8 +35,8 @@ export function published(posts: MarkdownInstance[]): Post[] {
 
 export function getRSS(posts: MarkdownInstance[]) {
 	return {
-		title: 'NJS Blog',
-		description: 'NEXT JOIN Studio Blog Feed',
+		title: 'Left Join Studio',
+		description: 'Writing from Left Join Studio',
 		stylesheet: true,
 		customData: `<language>en-us</language>`,
 		items: published(posts).map((post: Post) => ({

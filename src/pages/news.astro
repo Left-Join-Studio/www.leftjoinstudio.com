@@ -1,19 +1,17 @@
 ---
 import { published } from "@data/post"
 import Layout from "@layouts/page";
+import PageHero from "@components/PageHero";
 import Preview from "@components/blog/preview";
 
 const markdownFiles = await Astro.glob('../content/**/*.md')
 const posts = published(markdownFiles);
 ---
-<Layout title="News - Left Join Studio" desc="Latest updates, insights, and announcements from Left Join Studio.">
-	<section class="px-6 py-12">
-		<div class="max-w-4xl mx-auto">
-			<h1 class="text-3xl md:text-4xl font-bold text-charcoal mb-2">
-				News
-			</h1>
-			<p class="text-pencil mb-8">Updates and insights from Left Join Studio</p>
-			<div class="grid md:grid-cols-2 gap-6">
+<Layout title="Writing - Left Join Studio" desc="How Left Join Studio thinks about prototypes, pricing and building software that gets used.">
+	<PageHero label="Writing" title="How we think." lead="Notes on prototypes, pricing, and building software that gets used." />
+	<section class="bg-paper">
+		<div class="wrap section">
+			<div class="panel-grid md:grid-cols-2">
 				{posts.map((p) => <Preview post={p} />)}
 			</div>
 		</div>

@@ -1,33 +1,36 @@
 ---
 import { nav } from "@data/nav"
+import { jesse } from "@data/products"
+import Wordmark from "@components/Wordmark";
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
 ---
-<nav class="navbar bg-paper border-b border-charcoal/10">
-  <div class="flex-1">
-      <a href="/" class="p-2 hover:opacity-80 transition-opacity flex gap-4 items-center">
-          <img src="/images/logo-wide.png"
-               width="211" height="80" alt="Left Join Studio"
-               class="w-[8em]">
-      </a>
-  </div>
-  <div class="flex-none">
-    <ul class="menu menu-horizontal p-0 hidden sm:flex gap-1">
+<header class="sticky top-0 z-40 bg-paper/95 backdrop-blur border-b border-charcoal/10">
+  <div class="wrap flex items-center justify-between h-[68px] gap-6">
+    <a href="/" class="shrink-0 py-2"><Wordmark /></a>
+    <nav class="hidden md:flex items-center gap-8" aria-label="Main">
       {nav.map(item => (
-        <li>
-          <a href={item.slug} class="text-charcoal hover:text-signal font-medium transition-colors">{item.title}</a>
-        </li>
+        <a href={item.slug}
+           aria-current={path === item.slug ? 'page' : undefined}
+           class:list={["text-[16px] font-medium transition-colors hover:text-signal-ink", path === item.slug ? "text-signal-ink" : "text-charcoal"]}>{item.title}</a>
       ))}
-    </ul>
-    <div class="dropdown dropdown-end sm:hidden">
-      <label tabindex={0} class="btn btn-ghost btn-square">
-        <svg class="w-6 h-6 text-charcoal" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-      </label>
-      <ul tabindex={0} class="dropdown-content menu p-2 bg-paper border border-charcoal/10 rounded-lg z-10 w-52 shadow-lg">
-        {nav.map(item => (
-          <li>
-            <a href={item.slug} class="text-charcoal hover:text-signal">{item.title}</a>
-          </li>
-        ))}
-      </ul>
+    </nav>
+    <div class="flex items-center gap-4">
+      <a href={jesse.phoneHref} class="hidden lg:inline-flex items-center gap-2.5 text-[15px] font-semibold text-charcoal hover:text-signal-ink transition-colors plausible-event-name=Call+Jesse plausible-event-where=nav">
+        <span class="dot-live"></span> Call Jesse {jesse.phone}
+      </a>
+      <a href="/contact" class="cta cta-primary !py-[10px] !px-[18px] !text-[15px] hidden sm:inline-flex">Talk to us</a>
+      <details class="md:hidden relative" data-menu>
+        <summary class="list-none cursor-pointer p-2 -mr-2 text-charcoal [&::-webkit-details-marker]:hidden" aria-label="Menu">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"></line><line x1="4" y1="12" x2="20" y2="12"></line><line x1="4" y1="17" x2="20" y2="17"></line></svg>
+        </summary>
+        <div class="panel absolute right-0 top-full mt-3 w-72 max-w-[calc(100vw-40px)] p-2 flex flex-col">
+          {nav.map(item => (
+            <a href={item.slug} class="px-3 py-3 font-medium text-charcoal hover:text-signal-ink border-b border-charcoal/10">{item.title}</a>
+          ))}
+          <a href="/contact" class="px-3 py-3 font-medium text-charcoal hover:text-signal-ink border-b border-charcoal/10">Contact</a>
+          <a href={jesse.phoneHref} class="px-3 py-3 font-semibold text-signal-ink whitespace-nowrap">Call Jesse {jesse.phone}</a>
+        </div>
+      </details>
     </div>
   </div>
-</nav>
+</header>

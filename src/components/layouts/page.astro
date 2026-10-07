@@ -15,16 +15,37 @@ const {img} = Astro.props;
 >
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
+	<script is:inline>document.documentElement.classList.add('js')</script>
 </Head>
-<body class="flex flex-col items-center min-h-screen bg-paper">
-	<div class="w-full lg:max-w-5xl flex-grow">
-        <div class="lg:max-w-5xl">
-            <Navbar />
-        </div>
-        <slot />
-	</div>
+<body class="flex flex-col min-h-screen bg-paper">
+	<a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:top-2 focus:left-2 focus:bg-signal focus:text-ink focus:px-4 focus:py-2 focus:rounded-lg">Skip to content</a>
+	<Navbar />
+	<main id="main" class="flex-grow">
+		<slot />
+	</main>
 	<Footer />
+	<script is:inline>
+	(function () {
+		var els = document.querySelectorAll('.reveal');
+		if (!('IntersectionObserver' in window)) {
+			els.forEach(function (el) { el.classList.add('is-in'); });
+			return;
+		}
+		var io = new IntersectionObserver(function (entries) {
+			entries.forEach(function (e) {
+				if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
+			});
+		}, { rootMargin: '0px 0px -8% 0px' });
+		els.forEach(function (el) { io.observe(el); });
+		// Close the phone menu when someone taps outside it
+		document.addEventListener('click', function (e) {
+			document.querySelectorAll('details[data-menu][open]').forEach(function (d) {
+				if (!d.contains(e.target)) d.removeAttribute('open');
+			});
+		});
+	})();
+	</script>
 	<script defer data-domain="leftjoinstudio.com" src="https://plausible.dataturd.com/js/script.outbound-links.pageview-props.tagged-events.js"></script>
 </body>
 </html>
