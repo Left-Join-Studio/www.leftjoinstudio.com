@@ -18,6 +18,12 @@ const stats = [
 	{ n: String(company.since), label: 'The year we started shipping production software' },
 ]
 
+const promises = [
+	{ title: 'You talk to the person who built it', body: 'No account managers and no phone tree. Your question goes to someone who can fix the thing.' },
+	{ title: 'You know the price before you start', body: 'Jesse is free for a month with no card on file. Custom work is a fixed price, agreed in writing.' },
+	{ title: 'Nothing about your business has to change', body: 'We fit around how you already work, and anything we build for you is yours to keep.' },
+]
+
 const jesseSteps = [
 	{ title: 'Call Jesse', body: 'Tell it your trade. It plays your front office so you hear what your customers would get.' },
 	{ title: 'Say yes to the free month', body: 'It texts you a link. No card and no sales call.' },
@@ -27,35 +33,35 @@ const jesseSteps = [
 <Layout title="Left Join Studio - AI that does real work" desc="Left Join Studio builds AI products that do real work, starting with Jesse, the AI receptionist that answers every job call. Call it now and hear for yourself.">
 
 	<!-- Hero -->
-	<section class="on-dark bg-term text-paper gridlines overflow-hidden">
-		<div class="wrap pt-16 pb-20 md:pt-24 md:pb-28 grid gap-14 lg:grid-cols-12 lg:items-center">
+	<section class="bg-whiteboard overflow-hidden">
+		<div class="wrap pt-14 pb-16 md:pt-20 md:pb-24 grid gap-14 lg:grid-cols-12 lg:items-center">
 			<div class="lg:col-span-7">
-				<p class="eyebrow mb-6">Left_Join_Studio, Inc.</p>
-				<h1 class="display">AI that does real work<span class="text-signal">.</span><br/>Starting with your phone<span class="text-signal">.</span></h1>
-				<p class="lead mt-8 max-w-xl">We build AI products for businesses that don't have time to babysit software. Meet Jesse, the receptionist that answers every job call and emails you the details. It's on the line right now.</p>
-				<div class="mt-10 flex flex-col sm:flex-row gap-3">
-					<a href={jesse.phoneHref} class="cta cta-primary plausible-event-name=Call+Jesse plausible-event-where=hero">Call Jesse {jesse.phone}</a>
-					<a href="#products" class="cta cta-ghost">See what we build <span class="arrow">&rarr;</span></a>
-				</div>
-				<p class="mt-6 font-mono text-[13px] text-term-muted flex items-center gap-2">
-					<span class="dot-live"></span> Open now. Two minutes, and nobody tries to sell you anything.
+				<p class="inline-flex items-center gap-2.5 chip !py-2.5 !px-4 mb-7">
+					<span class="dot-live"></span> Jesse is answering calls right now
 				</p>
+				<h1 class="display">AI that does real work for your business. <span class="text-signal-ink">Starting with your phone.</span></h1>
+				<p class="lead mt-7 max-w-xl">We build AI tools for small businesses that don't have time to babysit software. Meet Jesse, the receptionist that answers every job call and emails you the details. And when you have a question, you talk to the person who built it.</p>
+				<div class="mt-9 flex flex-col sm:flex-row gap-3">
+					<a href={jesse.phoneHref} class="cta cta-primary !py-4 !px-6 !text-[17px] plausible-event-name=Call+Jesse plausible-event-where=hero">Call Jesse {jesse.phone}</a>
+					<a href="#products" class="cta cta-ghost !py-4 !px-6 !text-[17px]">See what we build <span class="arrow">&rarr;</span></a>
+				</div>
+				<p class="mt-5 text-[15px] text-pencil">Two minutes, and nobody tries to sell you anything.</p>
 			</div>
-			<div class="lg:col-span-5 lg:pl-4 pr-[10px]">
+			<div class="lg:col-span-5 lg:pl-4">
 				<CallSummary />
 			</div>
 		</div>
+	</section>
 
-		<!-- Numbers -->
-		<div class="border-t border-term-line">
-			<div class="wrap grid grid-cols-2 lg:grid-cols-4">
-				{stats.map((s, i) => (
-					<div class:list={["py-8 md:py-10 pr-6", i > 0 && "lg:pl-8 lg:border-l border-term-line", i % 2 === 1 && "pl-6 border-l lg:border-l", i > 1 && "border-t lg:border-t-0 border-term-line"]}>
-						<p class="font-mono font-medium text-paper text-[30px] md:text-[40px] leading-none tracking-tight">{s.n}</p>
-						<p class="mt-3 text-[14px] text-term-muted max-w-[22ch]">{s.label}</p>
-					</div>
-				))}
-			</div>
+	<!-- Numbers -->
+	<section class="bg-paper border-b border-charcoal/10">
+		<div class="wrap grid grid-cols-2 lg:grid-cols-4 gap-x-6">
+			{stats.map((s) => (
+				<div class="py-8 md:py-10">
+					<p class="font-display font-extrabold text-signal-ink text-[30px] md:text-[40px] leading-none tracking-tight">{s.n}</p>
+					<p class="mt-3 text-[15px] text-pencil max-w-[24ch]">{s.label}</p>
+				</div>
+			))}
 		</div>
 	</section>
 
@@ -64,25 +70,25 @@ const jesseSteps = [
 		<div class="wrap section">
 			<div class="grid gap-8 md:grid-cols-12 mb-12 md:mb-16">
 				<div class="md:col-span-7 reveal">
-					<p class="eyebrow mb-5">What_we_build</p>
+					<p class="eyebrow mb-5">What we build</p>
 					<h2 class="h2">Products you can try before you talk to anyone.</h2>
 				</div>
 				<p class="lead md:col-span-5 md:pt-10 reveal">If you saw a demo at a show, that was the real thing. Everything here is live, and the fastest way to judge it is to use it.</p>
 			</div>
 
-			<div class="border border-charcoal/15 grid lg:grid-cols-12 reveal">
+			<div class="panel grid lg:grid-cols-12 reveal">
 				<div class="lg:col-span-7 p-7 md:p-12">
 					<div class="flex flex-wrap items-center gap-2 mb-6">
 						<span class="chip"><span class="dot-live"></span> Live</span>
 						<span class="chip">{flagship.kind}</span>
 						<span class="chip">{flagship.audience}</span>
 					</div>
-					<h3 class="font-bold tracking-tight text-[clamp(34px,4vw,56px)] leading-none">{flagship.name}<span class="text-signal">.</span></h3>
+					<h3 class="font-bold tracking-tight text-[clamp(34px,4vw,56px)] leading-none">{flagship.name}</h3>
 					<p class="mt-4 text-[22px] font-semibold tracking-tight">{flagship.line}</p>
 					<p class="mt-4 text-pencil max-w-xl">{flagship.body}</p>
 					<ul class="mt-8 grid sm:grid-cols-2 gap-x-8 gap-y-4 text-[15px]">
 						{flagship.points.map(pt => (
-							<li class="flex gap-3"><span class="font-mono text-signal shrink-0" aria-hidden="true">+</span><span>{pt}</span></li>
+							<li class="flex gap-3"><span class="tick" aria-hidden="true"></span><span>{pt}</span></li>
 						))}
 					</ul>
 					<div class="mt-10 flex flex-col sm:flex-row gap-3">
@@ -90,12 +96,12 @@ const jesseSteps = [
 						<a href={flagship.url} class="cta cta-ghost">Get a free month <span class="arrow">&rarr;</span></a>
 					</div>
 				</div>
-				<ol class="lg:col-span-5 bg-whiteboard border-t lg:border-t-0 lg:border-l border-charcoal/15 p-7 md:p-12 flex flex-col justify-center gap-8">
+				<ol class="lg:col-span-5 bg-whiteboard border-t lg:border-t-0 lg:border-l border-charcoal/10 p-7 md:p-12 flex flex-col justify-center gap-8">
 					{jesseSteps.map((s, i) => (
-						<li class="flex gap-5">
-							<span class="font-mono text-[13px] text-signal-ink pt-1">{String(i + 1).padStart(2, '0')}</span>
+						<li class="flex gap-4">
+							<span class="num">{i + 1}</span>
 							<div>
-								<p class="font-semibold tracking-tight text-[19px]">{s.title}</p>
+								<p class="font-display font-bold tracking-tight text-[19px] pt-0.5">{s.title}</p>
 								<p class="text-pencil text-[15px] mt-1">{s.body}</p>
 							</div>
 						</li>
@@ -104,9 +110,9 @@ const jesseSteps = [
 			</div>
 
 			<div class="mt-10 reveal">
-				<p class="font-mono text-[12px] uppercase tracking-wider text-pencil mb-4">It knows the questions your trade gets</p>
+				<p class="font-display font-bold text-[19px] mb-4">It knows the questions your trade gets</p>
 				<ul class="flex flex-wrap gap-2">
-					{jesse.trades.map(t => <li class="chip !text-charcoal !normal-case !tracking-normal !text-[13px] !py-2 !px-3">{t}</li>)}
+					{jesse.trades.map(t => <li class="chip !py-2.5 !px-3.5">{t}</li>)}
 				</ul>
 			</div>
 
@@ -116,13 +122,13 @@ const jesseSteps = [
 						<h3 class="h3">Also from the studio</h3>
 						<a href="/products" class="link text-[15px] whitespace-nowrap">All products &rarr;</a>
 					</div>
-					<div class="rule-grid sm:grid-cols-2 lg:grid-cols-3">
+					<div class="panel-grid sm:grid-cols-2 lg:grid-cols-3">
 						{others.map(p => (
-							<a href={`/products#${p.slug}`} class="group p-7 flex flex-col hover:!bg-whiteboard transition-colors reveal">
-								<span class="font-mono text-[11px] uppercase tracking-wider text-pencil">{p.kind}</span>
-								<span class="mt-3 font-bold tracking-tight text-[24px]">{p.name}</span>
+							<a href={`/products#${p.slug}`} class="group p-7 flex flex-col reveal">
+								<span class="note">{p.kind}</span>
+								<span class="mt-2 font-display font-bold tracking-tight text-[24px]">{p.name}</span>
 								<span class="mt-2 text-pencil text-[15px] flex-grow">{p.line}</span>
-								<span class="mt-6 font-mono text-[12px] uppercase tracking-wider text-signal-ink">{p.audience} <span class="inline-block transition-transform group-hover:translate-x-1">&rarr;</span></span>
+								<span class="mt-6 note-accent">{p.audience} <span class="inline-block transition-transform group-hover:translate-x-1">&rarr;</span></span>
 							</a>
 						))}
 					</div>
@@ -131,26 +137,50 @@ const jesseSteps = [
 		</div>
 	</section>
 
+	<!-- Why a small business can count on us -->
+	<section class="bg-paper">
+		<div class="wrap pb-[clamp(64px,8vw,112px)]">
+			<div class="panel-tint p-7 md:p-12 reveal">
+				<div class="max-w-3xl">
+					<p class="eyebrow mb-4">Here for you</p>
+					<h2 class="h2">You run the business. We'll be the tech people you can call.</h2>
+				</div>
+				<div class="mt-10 grid gap-8 md:grid-cols-3">
+					{promises.map(p => (
+						<div class="flex gap-4">
+							<span class="tick !bg-white" aria-hidden="true"></span>
+							<div>
+								<h3 class="h3">{p.title}</h3>
+								<p class="mt-2 text-charcoal/80 text-[16px]">{p.body}</p>
+							</div>
+						</div>
+					))}
+				</div>
+			</div>
+		</div>
+	</section>
+
 	<!-- Client work -->
 	<section class="bg-whiteboard border-y border-charcoal/10">
 		<div class="wrap section">
 			<div class="grid gap-8 md:grid-cols-12 mb-12 md:mb-16">
 				<div class="md:col-span-7 reveal">
-					<p class="eyebrow mb-5">Built_for_clients</p>
+					<p class="eyebrow mb-5">Built for clients</p>
 					<h2 class="h2">The products are new. The experience isn't.</h2>
 				</div>
 				<p class="lead md:col-span-5 md:pt-10 reveal">Before we built our own products we built other people's, in places where a wrong number or a missed record is expensive. We still do.</p>
 			</div>
-			<div class="rule-grid sm:grid-cols-2 lg:grid-cols-4 [&>*]:!bg-whiteboard">
+			<div class="panel-grid sm:grid-cols-2 lg:grid-cols-4">
 				{industries.map(ind => (
 					<div class="p-6 md:p-7 reveal">
-						<p class="font-mono text-[11px] uppercase tracking-wider text-pencil"><span class="text-charcoal font-medium">{ind.sector}</span> &middot; {ind.field}</p>
-						<p class="mt-4 text-[15px] text-charcoal">{ind.work}</p>
+						<p class="font-display font-bold text-[19px]">{ind.sector}</p>
+						<p class="note mt-1">{ind.field}</p>
+						<p class="mt-4 text-[15px] text-pencil">{ind.work}</p>
 					</div>
 				))}
 			</div>
 			<div class="mt-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4 reveal">
-				<p class="font-mono text-[13px] text-pencil">Client names and references on request, under NDA.</p>
+				<p class="text-[15px] text-pencil">Client names and references on request, under NDA.</p>
 				<a href="/services" class="link text-[15px]">How we work with clients &rarr;</a>
 			</div>
 		</div>
@@ -160,15 +190,15 @@ const jesseSteps = [
 	<section class="bg-paper">
 		<div class="wrap section">
 			<div class="mb-12 md:mb-16 max-w-3xl reveal">
-				<p class="eyebrow mb-5">How_it_starts</p>
+				<p class="eyebrow mb-5">How it starts</p>
 				<h2 class="h2">Need something built for your business?</h2>
 				<p class="lead mt-6">You see working software in the first step, before you've committed to anything.</p>
 			</div>
-			<ol class="grid md:grid-cols-3 gap-10 md:gap-0">
+			<ol class="panel-grid md:grid-cols-3">
 				{steps.map((s, i) => (
-					<li class:list={["reveal md:px-8 first:md:pl-0 last:md:pr-0", i > 0 && "md:border-l border-charcoal/15"]}>
-						<p class="font-mono font-medium text-[44px] leading-none tracking-tight text-charcoal">{String(i + 1).padStart(2, '0')}<span class="text-signal">.</span></p>
-						<h3 class="h3 mt-6">{s.title}</h3>
+					<li class="reveal p-7 md:p-8">
+						<p class="num num-lg">{i + 1}</p>
+						<h3 class="h3 mt-5">{s.title}</h3>
 						<p class="text-pencil mt-3">{s.body}</p>
 					</li>
 				))}
@@ -187,12 +217,12 @@ const jesseSteps = [
 			<div class="wrap section">
 				<div class="flex justify-between items-end gap-6 mb-10 reveal">
 					<div>
-						<p class="eyebrow mb-5">From_the_studio</p>
+						<p class="eyebrow mb-5">From the studio</p>
 						<h2 class="h2">How we think.</h2>
 					</div>
 					<a href="/news" class="link text-[15px] whitespace-nowrap">All posts &rarr;</a>
 				</div>
-				<div class:list={["rule-grid md:grid-cols-2", posts.length >= 3 && "lg:grid-cols-3"]}>
+				<div class:list={["panel-grid md:grid-cols-2", posts.length >= 3 && "lg:grid-cols-3"]}>
 					{posts.map((p) => <Preview post={p} />)}
 				</div>
 			</div>

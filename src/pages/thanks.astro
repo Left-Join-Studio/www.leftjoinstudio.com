@@ -9,9 +9,9 @@ const next = [
 ]
 ---
 <Layout title="Message received - Left Join Studio" desc="Your message reached Left Join Studio. A person reads it and writes back.">
-	<section class="on-dark bg-term text-paper gridlines">
+	<section class="bg-whiteboard border-b border-charcoal/10">
 		<div class="wrap py-24 md:py-32">
-			<p class="eyebrow mb-5">Message_received</p>
+			<p class="eyebrow mb-5">Message received</p>
 			<h1 class="h2 max-w-2xl">Got it. Thanks for writing in.</h1>
 			<p class="lead mt-6 max-w-xl">Your message is in our inbox. A person reads every one, and you'll hear back from a person too.</p>
 			<div class="mt-10 flex flex-col sm:flex-row gap-3">
@@ -24,22 +24,22 @@ const next = [
 	<section class="bg-paper">
 		<div class="wrap section grid gap-14 lg:grid-cols-12">
 			<div class="lg:col-span-7">
-				<div class="border border-charcoal/15">
-					<p class="eyebrow px-6 py-4 border-b border-charcoal/15 bg-whiteboard">What_happens_next</p>
+				<div class="panel">
+					<h2 class="h3 px-6 pt-6 pb-2">What happens next</h2>
 					<ol class="px-6 py-2">
 						{next.map((n, i) => (
-							<li class="flex gap-4 py-4 border-b border-charcoal/10 last:border-b-0">
-								<span class="font-mono text-[13px] text-signal-ink pt-0.5">{String(i + 1).padStart(2, '0')}</span>
-								<span class="text-[15px]">{n}</span>
+							<li class="flex items-start gap-4 py-4 border-b border-charcoal/10 last:border-b-0">
+								<span class="num">{i + 1}</span>
+								<span class="text-[16px] pt-1">{n}</span>
 							</li>
 						))}
 					</ol>
 				</div>
 			</div>
 			<aside class="lg:col-span-5">
-				<div class="on-dark bg-term text-paper p-6">
-					<p class="eyebrow mb-3">While_you_wait</p>
-					<p class="text-term-muted text-[15px]">Jesse is on the line now and will show you what your customers would hear.</p>
+				<div class="panel-tint p-7">
+					<h2 class="h3 mb-2">While you wait</h2>
+					<p class="text-charcoal text-[16px]">Jesse is on the line now and will show you what your customers would hear.</p>
 					<a href={jesse.phoneHref} class="cta cta-primary mt-5 w-full plausible-event-name=Call+Jesse plausible-event-where=thanks">Call Jesse {jesse.phone}</a>
 				</div>
 			</aside>

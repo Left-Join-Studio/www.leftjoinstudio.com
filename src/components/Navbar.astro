@@ -4,31 +4,31 @@ import { jesse } from "@data/products"
 import Wordmark from "@components/Wordmark";
 const path = Astro.url.pathname.replace(/\/$/, '') || '/';
 ---
-<header class="on-dark sticky top-0 z-40 bg-term border-b border-term-line">
-  <div class="wrap flex items-center justify-between h-16 gap-6">
-    <a href="/" class="shrink-0 py-2"><Wordmark dark /></a>
+<header class="sticky top-0 z-40 bg-paper/95 backdrop-blur border-b border-charcoal/10">
+  <div class="wrap flex items-center justify-between h-[68px] gap-6">
+    <a href="/" class="shrink-0 py-2"><Wordmark /></a>
     <nav class="hidden md:flex items-center gap-8" aria-label="Main">
       {nav.map(item => (
         <a href={item.slug}
            aria-current={path === item.slug ? 'page' : undefined}
-           class:list={["text-[15px] font-medium transition-colors hover:text-paper", path === item.slug ? "text-paper" : "text-term-muted"]}>{item.title}</a>
+           class:list={["text-[16px] font-medium transition-colors hover:text-signal-ink", path === item.slug ? "text-signal-ink" : "text-charcoal"]}>{item.title}</a>
       ))}
     </nav>
-    <div class="flex items-center gap-3">
-      <a href={jesse.phoneHref} class="hidden lg:inline-flex items-center gap-2 font-mono text-[13px] text-term-text hover:text-signal transition-colors plausible-event-name=Call+Jesse plausible-event-where=nav">
+    <div class="flex items-center gap-4">
+      <a href={jesse.phoneHref} class="hidden lg:inline-flex items-center gap-2.5 text-[15px] font-semibold text-charcoal hover:text-signal-ink transition-colors plausible-event-name=Call+Jesse plausible-event-where=nav">
         <span class="dot-live"></span> Call Jesse {jesse.phone}
       </a>
-      <a href="/contact" class="cta cta-primary !py-[10px] !px-4 hidden sm:inline-flex">Talk to us</a>
+      <a href="/contact" class="cta cta-primary !py-[10px] !px-[18px] !text-[15px] hidden sm:inline-flex">Talk to us</a>
       <details class="md:hidden relative" data-menu>
-        <summary class="list-none cursor-pointer p-2 -mr-2 text-paper [&::-webkit-details-marker]:hidden" aria-label="Menu">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"><line x1="3" y1="7" x2="21" y2="7"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="17" x2="21" y2="17"></line></svg>
+        <summary class="list-none cursor-pointer p-2 -mr-2 text-charcoal [&::-webkit-details-marker]:hidden" aria-label="Menu">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"></line><line x1="4" y1="12" x2="20" y2="12"></line><line x1="4" y1="17" x2="20" y2="17"></line></svg>
         </summary>
-        <div class="absolute right-0 top-full mt-3 w-64 bg-term border border-term-line p-2 flex flex-col">
+        <div class="panel absolute right-0 top-full mt-3 w-72 max-w-[calc(100vw-40px)] p-2 flex flex-col">
           {nav.map(item => (
-            <a href={item.slug} class="px-3 py-3 text-term-text hover:text-signal border-b border-term-line">{item.title}</a>
+            <a href={item.slug} class="px-3 py-3 font-medium text-charcoal hover:text-signal-ink border-b border-charcoal/10">{item.title}</a>
           ))}
-          <a href="/contact" class="px-3 py-3 text-term-text hover:text-signal border-b border-term-line">Contact</a>
-          <a href={jesse.phoneHref} class="px-3 py-3 font-mono text-[13px] text-signal">Call Jesse {jesse.phone}</a>
+          <a href="/contact" class="px-3 py-3 font-medium text-charcoal hover:text-signal-ink border-b border-charcoal/10">Contact</a>
+          <a href={jesse.phoneHref} class="px-3 py-3 font-semibold text-signal-ink whitespace-nowrap">Call Jesse {jesse.phone}</a>
         </div>
       </details>
     </div>

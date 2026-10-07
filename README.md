@@ -22,7 +22,7 @@ npm run preview   # serves dist/
 | `src/data/products.ts` | Every product, and `SHOWN`, which picks the tiers the site lists. Jesse leads. |
 | `src/data/company.ts` | Address, phone, client work by industry, the engagement steps, and the buyer's questions with their answers. |
 | `src/components/sections/` | Sections shared across pages: the questions grid, the orange call-to-action band, the example call summary. |
-| `src/style/tailwind.css` | The design system: `.eyebrow`, `.cta`, `.rule-grid`, `.terminal`, and so on. |
+| `src/style/tailwind.css` | The design system: `.eyebrow`, `.cta`, `.panel`, `.panel-grid`, `.chip`, and so on. |
 | `src/content/*.md` | Posts. A file under `drafts/` only shows in dev. |
 | `src/pages/thanks.astro` | Where the contact form lands after sending. Web3Forms redirects there; it's kept out of the sitemap. |
 
@@ -33,7 +33,8 @@ npm run preview   # serves dist/
 - The questions in `company.ts` are the objections a buyer has about a small studio they just
   met. Answer them plainly. Don't hide the size of the company; say why it works in their favor.
 - Plain English first. A contractor reading on a phone at a trade show is the audience, so
-  the terminal styling is trim, and the sentences aren't written for developers.
+  the sentences aren't written for developers. Explain a technical word the first time, or
+  leave it out.
 
 ## // CHECK_IT_ON_A_PHONE
 
@@ -44,10 +45,23 @@ The usual cause of a sideways scroll is a grid item holding one long unbroken li
 
 ## // LOOK
 
-Follows the Left Join Studio identity: square corners, Signal Orange `#E85D00` as the only
-accent, `// CAPS_WITH_UNDERSCORES` section labels (the `.eyebrow` class adds the slashes), Inter
-for words and JetBrains Mono for data. No gradients and no rounded cards. Buttons put dark ink
-on orange, because white on that orange fails contrast at button size.
+Light, warm and plain-spoken. The people reading this site run small businesses, and it has to
+tell them we're here for them, so it doesn't look like a developer tool.
+
+- Cream and white surfaces, Signal Orange `#E85D00` as the only accent, and a warm near-black
+  for the footer. No gradients.
+- Plus Jakarta Sans for headings, Inter for everything else. No monospace type anywhere.
+- Section labels are ordinary words in sentence case ("What we build").
+- Cards have soft corners (18px) and a quiet shadow; buttons and fields are 10px.
+- Buttons put dark ink on orange, because white on that orange fails contrast at button size.
+
+This overrides the usual Left Join Studio identity on purpose. The terminal vocabulary (square
+corners, `// CAPS_WITH_UNDERSCORES` labels, the `$` prompt, JetBrains Mono, code windows) read
+as niche and nerdy to a small-business owner, so none of it belongs on this site. Don't bring
+it back, and don't put a single colored edge on a rounded card.
+
+`tailwind.css` names its own classes `.panel` and `.note` because daisyUI already owns `.card`
+and `.label`.
 
 ## Thanks to `Daisy Blog`
 

@@ -9,7 +9,7 @@ const {label} = Astro.props;
 <Page title={title ? `${title} - Left Join Studio` : undefined} desc={desc} img={img}>
     {label && <PageHero label={label} title={title} lead={desc} />}
     <div class="wrap section">
-        <div class="prose prose-headings:text-charcoal prose-headings:tracking-tight prose-p:text-pencil prose-strong:text-charcoal prose-li:text-pencil prose-img:rounded-none lg:prose-lg max-w-3xl [&_a:not(.cta)]:text-signal-ink [&_.cta]:no-underline">
+        <div class="prose prose-headings:text-charcoal prose-headings:tracking-tight prose-p:text-pencil prose-strong:text-charcoal prose-li:text-pencil prose-img:rounded-2xl prose-headings:font-display lg:prose-lg max-w-3xl [&_a:not(.cta)]:text-signal-ink [&_.cta]:no-underline">
             <slot />
         </div>
     </div>

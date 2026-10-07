@@ -15,15 +15,16 @@
     text-rendering: optimizeLegibility;
   }
   h1, h2, h3, h4 {
-    letter-spacing: -0.03em;
+    @apply font-display;
+    letter-spacing: -0.025em;
     text-wrap: balance;
   }
   p {
     text-wrap: pretty;
   }
   ::selection {
-    background: #E85D00;
-    color: #1A1A1A;
+    background: #FBD9C0;
+    color: #1F1B18;
   }
   :focus-visible {
     outline: 2px solid #E85D00;
@@ -40,7 +41,7 @@
 }
 
 @layer components {
-  /* A grid item defaults to min-width: auto, so one long unbroken line (a code block, a phone
+  /* A grid item defaults to min-width: auto, so one long unbroken line (a web address, a phone
      number in a button) widens the whole track and the page pans sideways on a phone. */
   .grid > * { min-width: 0; }
 
@@ -51,167 +52,174 @@
     padding-right: clamp(20px, 4vw, 48px);
   }
   .section {
-    padding-top: clamp(64px, 8vw, 120px);
-    padding-bottom: clamp(64px, 8vw, 120px);
+    padding-top: clamp(64px, 8vw, 112px);
+    padding-bottom: clamp(64px, 8vw, 112px);
   }
 
-  /* // CAPS_WITH_UNDERSCORES section label */
+  /* The short label over a heading, in plain words */
   .eyebrow {
-    @apply font-mono font-medium uppercase text-pencil;
-    font-size: 12px;
-    letter-spacing: 0.08em;
-    line-height: 1.5;
+    @apply font-sans font-semibold text-signal-ink;
+    font-size: 15px;
+    letter-spacing: 0;
+    line-height: 1.4;
   }
-  .eyebrow::before {
-    content: '// ';
-    @apply text-signal;
-  }
-  .on-dark .eyebrow { @apply text-term-muted; }
+  .on-dark .eyebrow { @apply text-signal-soft; }
 
   .display {
-    @apply font-bold;
-    font-size: clamp(42px, 6.2vw, 88px);
-    letter-spacing: -0.045em;
-    line-height: 0.98;
+    @apply font-display font-extrabold;
+    font-size: clamp(38px, 5.4vw, 72px);
+    letter-spacing: -0.035em;
+    line-height: 1.04;
   }
   .h2 {
-    @apply font-bold;
-    font-size: clamp(30px, 3.8vw, 52px);
-    line-height: 1.05;
+    @apply font-display font-bold;
+    font-size: clamp(28px, 3.4vw, 46px);
+    line-height: 1.12;
   }
   .h3 {
-    @apply font-semibold;
-    font-size: clamp(20px, 1.6vw, 24px);
-    line-height: 1.2;
-    letter-spacing: -0.02em;
+    @apply font-display font-bold;
+    font-size: clamp(20px, 1.6vw, 23px);
+    line-height: 1.25;
+    letter-spacing: -0.015em;
   }
   .lead {
     @apply text-pencil;
     font-size: clamp(18px, 1.5vw, 21px);
-    line-height: 1.5;
-    letter-spacing: -0.01em;
+    line-height: 1.55;
   }
-  .on-dark .lead { @apply text-term-muted; }
+  .on-dark .lead { @apply text-ink-muted; }
 
-  /* Buttons: square, mono, dark ink on orange so small text passes contrast */
+  /* Small supporting labels */
+  .note {
+    @apply text-pencil font-medium;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+  .note-accent {
+    @apply text-signal-ink font-semibold;
+    font-size: 15px;
+    line-height: 1.4;
+  }
+
+  /* Buttons: dark ink on orange, because white on that orange fails contrast */
   .cta {
-    @apply inline-flex items-center justify-center font-mono font-medium uppercase whitespace-nowrap cursor-pointer;
-    gap: 10px;
-    font-size: 13px;
+    @apply inline-flex items-center justify-center font-sans font-semibold whitespace-nowrap cursor-pointer;
+    gap: 8px;
+    font-size: 16px;
     line-height: 1.3;
-    letter-spacing: 0.04em;
-    padding: 14px 20px;
-    border: 1px solid transparent;
-    transition: background 0.2s, border-color 0.2s, color 0.2s;
+    padding: 14px 22px;
+    border: 1.5px solid transparent;
+    border-radius: 10px;
+    transition: background 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s, transform 0.2s;
   }
   .cta .arrow { transition: transform 0.25s cubic-bezier(0.2, 0.7, 0.2, 1); }
   .cta:hover .arrow { transform: translateX(4px); }
-  .cta-primary { @apply bg-signal text-term; }
-  .cta-primary:hover { background: #FF7A1F; }
-  .cta-ghost { @apply text-charcoal; border-color: rgba(44, 44, 44, 0.35); }
-  .cta-ghost:hover { @apply border-charcoal bg-charcoal text-paper; }
-  .on-dark .cta-ghost { @apply text-term-text; border-color: #4A4A4A; }
-  .on-dark .cta-ghost:hover { @apply border-term-text bg-term-text text-term; }
-  .cta-ink { @apply bg-term text-paper; }
+  .cta-primary { @apply bg-signal text-ink; box-shadow: 0 6px 16px -6px rgba(232, 93, 0, 0.55); }
+  .cta-primary:hover { background: #FF7A1F; transform: translateY(-1px); }
+  .cta-ghost { @apply text-charcoal bg-white; border-color: rgba(44, 44, 44, 0.22); }
+  .cta-ghost:hover { @apply border-charcoal; }
+  .on-dark .cta-ghost { @apply text-paper bg-transparent; border-color: rgba(255, 255, 255, 0.3); }
+  .on-dark .cta-ghost:hover { @apply border-paper; }
+  .cta-ink { @apply bg-ink text-paper; }
   .cta-ink:hover { @apply bg-charcoal; }
 
   .link {
-    @apply text-signal-ink font-medium underline decoration-1 underline-offset-4;
+    @apply text-signal-ink font-semibold underline decoration-1 underline-offset-4;
     text-decoration-color: rgba(184, 74, 0, 0.4);
   }
   .link:hover { text-decoration-color: currentColor; }
-  .on-dark .link { @apply text-signal; text-decoration-color: rgba(232, 93, 0, 0.5); }
+  .on-dark .link { @apply text-signal-soft; text-decoration-color: rgba(255, 176, 122, 0.5); }
 
-  /* Hairline grid: cells share 1px rules instead of floating as cards */
-  .rule-grid {
-    @apply grid;
-    gap: 1px;
-    background: rgba(44, 44, 44, 0.14);
-    border: 1px solid rgba(44, 44, 44, 0.14);
+  /* Cards: white, soft corners, a quiet shadow */
+  .panel {
+    @apply bg-white;
+    border: 1px solid rgba(44, 44, 44, 0.1);
+    border-radius: 18px;
+    box-shadow: 0 1px 2px rgba(60, 40, 20, 0.04), 0 12px 32px -18px rgba(60, 40, 20, 0.18);
+    overflow: hidden;
   }
-  .rule-grid > * { @apply bg-paper; }
-  .on-dark .rule-grid { background: #333333; border-color: #333333; }
-  .on-dark .rule-grid > * { @apply bg-term; }
+  .panel-grid {
+    @apply grid;
+    gap: 16px;
+  }
+  .panel-grid > * {
+    @apply bg-white;
+    border: 1px solid rgba(44, 44, 44, 0.1);
+    border-radius: 18px;
+    box-shadow: 0 1px 2px rgba(60, 40, 20, 0.04), 0 12px 32px -18px rgba(60, 40, 20, 0.18);
+  }
+  a.panel, .panel-grid > a { transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s; }
+  a.panel:hover, .panel-grid > a:hover {
+    transform: translateY(-3px);
+    border-color: rgba(232, 93, 0, 0.45);
+    box-shadow: 0 1px 2px rgba(60, 40, 20, 0.04), 0 20px 36px -18px rgba(60, 40, 20, 0.28);
+  }
+  /* A warm tinted panel for the "call Jesse" asides */
+  .panel-tint {
+    @apply bg-tint;
+    border: 1px solid rgba(232, 93, 0, 0.18);
+    border-radius: 18px;
+  }
 
   .chip {
-    @apply inline-flex items-center font-mono uppercase text-pencil;
-    gap: 6px;
-    font-size: 11px;
-    letter-spacing: 0.08em;
+    @apply inline-flex items-center font-medium text-charcoal bg-white;
+    gap: 7px;
+    font-size: 14px;
     line-height: 1;
-    padding: 6px 8px;
-    border: 1px solid rgba(44, 44, 44, 0.2);
+    padding: 8px 12px;
+    border: 1px solid rgba(44, 44, 44, 0.14);
+    border-radius: 999px;
   }
-  .on-dark .chip { @apply text-term-muted; border-color: #444; }
 
   .dot-live {
-    @apply inline-block bg-term-green;
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-  }
-
-  /* Terminal window */
-  .terminal {
-    @apply bg-term font-mono text-term-text;
-    border: 1px solid #3A3A3A;
-    font-size: 13.5px;
-    line-height: 1.75;
-  }
-  .terminal-bar {
-    @apply flex items-center bg-term-surface text-term-muted;
-    gap: 7px;
-    padding: 10px 14px;
-    border-bottom: 1px solid #3A3A3A;
-    font-size: 12px;
-  }
-  .terminal-bar i {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    display: block;
-  }
-  .terminal-body { padding: 18px 20px 20px; overflow-x: auto; }
-  @media (max-width: 479px) {
-    .terminal { font-size: 12px; }
-    .terminal-body { padding: 16px 14px 18px; }
-  }
-  .t-prompt { @apply text-signal; }
-  .t-muted { @apply text-term-muted; }
-  .t-ok { @apply text-term-green; }
-  .t-str { @apply text-term-green; }
-  .t-kw { @apply text-signal; }
-
-  .cursor {
-    @apply inline-block bg-signal align-text-bottom;
+    @apply inline-block bg-go shrink-0;
     width: 8px;
-    height: 1.1em;
-    margin-left: 2px;
-    animation: blink 1.1s steps(1) infinite;
+    height: 8px;
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px rgba(46, 158, 91, 0.18);
   }
 
-  /* Fine blueprint grid behind dark heroes. An SVG tile, not a gradient. */
-  .gridlines {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64'%3E%3Cpath d='M64 0H0v64' fill='none' stroke='%23ffffff' stroke-opacity='0.045'/%3E%3C/svg%3E");
+  /* Step and list numbers */
+  .num {
+    @apply inline-flex items-center justify-center shrink-0 bg-tint text-signal-ink font-display font-bold;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    font-size: 15px;
+    line-height: 1;
+  }
+  .num-lg { width: 52px; height: 52px; font-size: 22px; }
+
+  /* Check mark for feature lists */
+  .tick {
+    @apply inline-block shrink-0 bg-tint;
+    width: 22px;
+    height: 22px;
+    margin-top: 2px;
+    border-radius: 50%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 22'%3E%3Cpath d='M6.5 11.5l3 3 6-7' fill='none' stroke='%23B84A00' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  }
+  .on-dark .tick {
+    background-color: rgba(255, 255, 255, 0.1);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 22'%3E%3Cpath d='M6.5 11.5l3 3 6-7' fill='none' stroke='%23FFB07A' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
   }
 
   /* Form fields */
   .field-label {
-    @apply block font-mono uppercase text-pencil;
-    font-size: 11px;
-    letter-spacing: 0.08em;
+    @apply block font-semibold text-charcoal;
+    font-size: 15px;
     margin-bottom: 8px;
   }
   .field {
-    @apply block w-full bg-paper text-charcoal;
-    border: 1px solid rgba(44, 44, 44, 0.3);
+    @apply block w-full bg-white text-charcoal;
+    border: 1.5px solid rgba(44, 44, 44, 0.2);
     padding: 13px 14px;
     font-size: 16px;
     line-height: 1.4;
-    border-radius: 0;
+    border-radius: 10px;
   }
   .field::placeholder { color: #8A8A8A; }
-  .field:focus { outline: 2px solid #E85D00; outline-offset: 0; border-color: #E85D00; }
+  .field:focus { outline: 3px solid rgba(232, 93, 0, 0.25); outline-offset: 0; border-color: #E85D00; }
 
   /* Scroll reveal. Only hides content once JS has confirmed it can show it again. */
   .js .reveal {
@@ -222,12 +230,7 @@
   .js .reveal.is-in { opacity: 1; transform: none; }
 }
 
-@keyframes blink {
-  0%, 55% { opacity: 1; }
-  56%, 100% { opacity: 0; }
-}
-
 .astro-code {
   padding: 1rem;
-  border: 1px solid #333;
+  border-radius: 10px;
 }

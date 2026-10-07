@@ -20,25 +20,25 @@ const next = [
 				<ContactForm />
 			</div>
 			<aside class="lg:col-span-5 space-y-6">
-				<div class="border border-charcoal/15">
-					<p class="eyebrow px-6 py-4 border-b border-charcoal/15 bg-whiteboard">What_happens_next</p>
+				<div class="panel">
+					<h2 class="h3 px-6 pt-6 pb-2">What happens next</h2>
 					<ol class="px-6 py-2">
 						{next.map((n, i) => (
-							<li class="flex gap-4 py-4 border-b border-charcoal/10 last:border-b-0">
-								<span class="font-mono text-[13px] text-signal-ink pt-0.5">{String(i + 1).padStart(2, '0')}</span>
-								<span class="text-[15px]">{n}</span>
+							<li class="flex items-start gap-4 py-4 border-b border-charcoal/10 last:border-b-0">
+								<span class="num">{i + 1}</span>
+								<span class="text-[16px] pt-1">{n}</span>
 							</li>
 						))}
 					</ol>
 				</div>
-				<div class="on-dark bg-term text-paper p-6">
-					<p class="eyebrow mb-3">Here_about_Jesse</p>
-					<p class="text-term-muted text-[15px]">Skip the form. Jesse is on the line now and will show you what your customers would hear.</p>
+				<div class="panel-tint p-7">
+					<h2 class="h3 mb-2">Here about Jesse?</h2>
+					<p class="text-charcoal text-[16px]">Skip the form. Jesse is on the line now and will show you what your customers would hear.</p>
 					<a href={jesse.phoneHref} class="cta cta-primary mt-5 w-full plausible-event-name=Call+Jesse plausible-event-where=contact">Call Jesse {jesse.phone}</a>
 				</div>
-				<div class="border border-charcoal/15 p-6">
-					<p class="eyebrow mb-3">Corporate</p>
-					<address class="not-italic font-mono text-[14px] leading-relaxed">
+				<div class="panel p-7">
+					<h2 class="h3 mb-3">Where to find us</h2>
+					<address class="not-italic text-[16px] leading-relaxed text-pencil">
 						{company.legal}<br/>
 						{company.street}<br/>
 						{company.city}<br/>

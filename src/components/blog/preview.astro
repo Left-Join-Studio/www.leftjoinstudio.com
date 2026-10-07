@@ -1,9 +1,9 @@
 ---
 const { post } = Astro.props;
 ---
-<a href={`/${post.slug}`} class="group flex flex-col p-7 hover:!bg-whiteboard transition-colors">
-	<span class="font-mono text-[11px] uppercase tracking-wider text-pencil">{post.author ? `By ${post.author}` : 'Left Join Studio'}</span>
-	<span class="mt-3 font-bold tracking-tight text-[22px] leading-tight text-charcoal">{post.title}</span>
+<a href={`/${post.slug}`} class="group flex flex-col p-7">
+	<span class="note">{post.author ? `By ${post.author}` : 'Left Join Studio'}</span>
+	<span class="mt-3 font-display font-bold tracking-tight text-[22px] leading-tight text-charcoal">{post.title}</span>
 	<span class="mt-3 text-pencil text-[15px] flex-grow">{post.desc}</span>
-	<span class="mt-6 font-mono text-[12px] uppercase tracking-wider text-signal-ink">Read <span class="inline-block transition-transform group-hover:translate-x-1">&rarr;</span></span>
+	<span class="mt-6 note-accent">Read <span class="inline-block transition-transform group-hover:translate-x-1">&rarr;</span></span>
 </a>

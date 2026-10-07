@@ -19,9 +19,9 @@ export async function getStaticPaths({ rss }) {
 const { post: { Content }, post } = Astro.props;
 ---
 <Layout title={post.title} desc={post.desc} img={post.img ? post.img : null}>
-	<p class="not-prose mb-8"><a href="/news" class="font-mono text-[12px] uppercase tracking-wider text-pencil hover:text-signal-ink">&larr; Writing</a></p>
+	<p class="not-prose mb-8"><a href="/news" class="note hover:text-signal-ink">&larr; Writing</a></p>
 	<h1>{post.title}</h1>
-	<p class="not-prose font-mono text-[12px] uppercase tracking-wider text-pencil -mt-4 mb-10">
+	<p class="not-prose note -mt-4 mb-10">
 		<Date date={post.date}/>{post.author && <span> &middot; {post.author}</span>}
 	</p>
 	{post.img &&

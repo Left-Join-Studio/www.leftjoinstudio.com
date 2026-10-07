@@ -29,19 +29,19 @@ const packages = [
 		<div class="wrap section">
 			<div class="grid md:grid-cols-2 gap-6">
 				{packages.map(p => (
-					<div class:list={["p-8 md:p-10 flex flex-col reveal", p.featured ? "on-dark bg-term text-paper border border-term" : "border border-charcoal/15"]}>
+					<div class:list={["p-8 md:p-10 flex flex-col reveal", p.featured ? "on-dark bg-ink text-paper rounded-[18px] shadow-[0_24px_48px_-24px_rgba(31,27,24,0.6)]" : "panel"]}>
 						<div class="flex items-center justify-between gap-4">
-							<h2 class="font-bold tracking-tight text-[30px] leading-none">{p.name}<span class="text-signal">.</span></h2>
-							{p.featured && <span class="chip !text-signal !border-signal">Most thorough</span>}
+							<h2 class="font-bold tracking-tight text-[30px] leading-none">{p.name}</h2>
+							{p.featured && <span class="inline-block bg-signal text-ink font-semibold text-[13px] rounded-full px-3 py-1.5 whitespace-nowrap">Most thorough</span>}
 						</div>
-						<p class:list={["mt-5", p.featured ? "text-term-muted" : "text-pencil"]}>{p.body}</p>
+						<p class:list={["mt-5", p.featured ? "text-ink-muted" : "text-pencil"]}>{p.body}</p>
 						<p class="mt-8 flex items-baseline gap-3">
-							<span class="font-mono font-medium text-[48px] leading-none tracking-tight">{p.price}</span>
-							<span class:list={["font-mono text-[12px] uppercase tracking-wider", p.featured ? "text-term-muted" : "text-pencil"]}>{p.unit}</span>
+							<span class="font-display font-extrabold text-[48px] leading-none tracking-tight">{p.price}</span>
+							<span class:list={["text-[15px] font-medium", p.featured ? "text-ink-muted" : "text-pencil"]}>{p.unit}</span>
 						</p>
 						<ul class="mt-8 space-y-3 text-[15px] flex-grow">
 							{p.points.map(pt => (
-								<li class="flex gap-3"><span class="font-mono text-signal shrink-0" aria-hidden="true">+</span><span>{pt}</span></li>
+								<li class="flex gap-3"><span class="tick" aria-hidden="true"></span><span>{pt}</span></li>
 							))}
 						</ul>
 						<a href="/contact" class:list={["cta mt-10", p.featured ? "cta-primary" : "cta-ghost"]}>Start learning <span class="arrow">&rarr;</span></a>

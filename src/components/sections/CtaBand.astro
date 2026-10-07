@@ -5,7 +5,7 @@ const {
   body = "Jesse is on the line right now. If you'd rather talk about something built for your business, the first call is free and comes with a straight answer.",
 } = Astro.props;
 ---
-<section class="bg-signal text-term">
+<section class="bg-signal text-ink">
   <div class="wrap py-16 md:py-24 grid gap-10 md:grid-cols-12 md:items-end">
     <div class="md:col-span-7">
       <h2 class="h2">{title}</h2>
@@ -13,7 +13,7 @@ const {
     </div>
     <div class="md:col-span-5 flex flex-col sm:flex-row md:justify-end gap-3">
       <a href={jesse.phoneHref} class="cta cta-ink plausible-event-name=Call+Jesse plausible-event-where=cta-band">Call Jesse {jesse.phone}</a>
-      <a href="/contact" class="cta border-term text-term hover:bg-term hover:text-paper">Talk to us <span class="arrow">&rarr;</span></a>
+      <a href="/contact" class="cta border-ink text-ink hover:bg-ink hover:text-paper">Talk to us <span class="arrow">&rarr;</span></a>
     </div>
   </div>
 </section>

@@ -1,11 +1,11 @@
 ---
-// The dark band that opens every inside page.
+// The warm band that opens every inside page.
 const { label, title, lead } = Astro.props;
 ---
-<section class="on-dark bg-term text-paper gridlines border-b border-term-line">
-  <div class="wrap pt-16 pb-14 md:pt-24 md:pb-20">
-    <p class="eyebrow mb-5">{label}</p>
-    <h1 class="h2 max-w-3xl">{title}</h1>
+<section class="bg-whiteboard border-b border-charcoal/10">
+  <div class="wrap pt-14 pb-14 md:pt-20 md:pb-20">
+    <p class="eyebrow mb-4">{label}</p>
+    <h1 class="h2 !text-[clamp(32px,4.2vw,56px)] max-w-3xl">{title}</h1>
     {lead && <p class="lead mt-6 max-w-2xl">{lead}</p>}
     <slot />
   </div>
