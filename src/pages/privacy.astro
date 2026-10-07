@@ -1,0 +1,26 @@
+---
+import { company } from "@data/company"
+import Layout from "@layouts/prose";
+---
+<Layout title="Privacy" label="Privacy" desc="What this website collects, in plain English.">
+	<p>This page covers the website at leftjoinstudio.com. Jesse has its own <a href="/jesse/privacy">privacy policy</a> and <a href="/jesse/terms">SMS terms</a>, because it handles phone calls and text messages.</p>
+
+	<h2>What we collect</h2>
+	<ul>
+		<li><strong>Page views.</strong> We count visits with Plausible Analytics, which we host ourselves. It sets no cookies and doesn't build a profile of you.</li>
+		<li><strong>The contact form.</strong> When you send it, your name, email address and message are delivered to our inbox through Web3Forms. We use them to answer you.</li>
+		<li><strong>Fonts.</strong> The typefaces load from Google Fonts, so Google's servers see the request your browser makes for them.</li>
+	</ul>
+
+	<h2>What we don't do</h2>
+	<ul>
+		<li>We don't sell or rent your information.</li>
+		<li>We don't add you to a mailing list because you wrote to us.</li>
+		<li>We don't run advertising trackers on this site.</li>
+	</ul>
+
+	<h2>Questions, or want something deleted?</h2>
+	<p>Use the <a href="/contact">contact form</a> or call <a href={company.phoneHref}>{company.phone}</a> and we'll take care of it.</p>
+
+	<p>{company.legal}<br/>{company.street}<br/>{company.city}</p>
+</Layout>

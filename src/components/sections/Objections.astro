@@ -1,0 +1,24 @@
+---
+import { objections } from "@data/company"
+const { id = "questions" } = Astro.props;
+---
+<section id={id} class="on-dark bg-term text-paper">
+  <div class="wrap section">
+    <div class="grid gap-8 md:grid-cols-12 mb-12 md:mb-16">
+      <div class="md:col-span-7 reveal">
+        <p class="eyebrow mb-5">Fair_questions</p>
+        <h2 class="h2">You just met us. Ask the hard ones.</h2>
+      </div>
+      <p class="lead md:col-span-5 md:pt-10 reveal">These are the questions we'd ask about a company we met at a booth. Here are the answers, in writing, before you spend a minute on a call.</p>
+    </div>
+    <div class="rule-grid md:grid-cols-2">
+      {objections.map((o, i) => (
+        <div class="p-7 md:p-9 reveal">
+          <p class="font-mono text-[12px] text-signal mb-4">{String(i + 1).padStart(2, '0')}</p>
+          <h3 class="h3 text-paper mb-3">{o.q}</h3>
+          <p class="text-term-muted">{o.a}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

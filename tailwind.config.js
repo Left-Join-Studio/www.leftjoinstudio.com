@@ -8,7 +8,7 @@ module.exports = {
     extend: {
       fontFamily: {
         'sans': ['"Inter"', 'system-ui', 'sans-serif'],
-        'mono': ['"JetBrains Mono"', 'monospace']
+        'mono': ['"JetBrains Mono"', 'ui-monospace', 'Menlo', 'monospace']
       },
       colors: {
         // Clarity Stack (Light Mode) - LJS Corporate
@@ -16,9 +16,18 @@ module.exports = {
         'whiteboard': '#F7F6F3',
         'charcoal': '#2C2C2C',
         'pencil': '#6B6B6B',
+        // Terminal Stack (Dark Mode)
+        'term': '#1A1A1A',
+        'term-surface': '#242424',
+        'term-line': '#333333',
+        'term-text': '#E0E0E0',
+        'term-muted': '#9A9A9A',
+        'term-green': '#4ADE80',
         // Signal Orange (Primary Accent)
         'signal': '#E85D00',
         'signal-muted': '#D4722A',
+        // Signal Orange dark enough for body-size text on paper
+        'signal-ink': '#B84A00',
         // Status Colors
         'proceed': '#3D7A4A',
         'modify': '#E85D00',
@@ -27,11 +36,12 @@ module.exports = {
     }
   },
   daisyui: {
+    logs: false,
     themes: [
       {
         ljs: {
           'primary': '#E85D00',           // Signal Orange
-          'primary-content': '#FFFEF9',   // Paper White text on primary
+          'primary-content': '#1A1A1A',   // Terminal BG text on primary
           'secondary': '#2C2C2C',         // Charcoal
           'secondary-content': '#FFFEF9', // Paper White text on secondary
           'accent': '#3D7A4A',            // Proceed green
@@ -46,6 +56,10 @@ module.exports = {
           'success': '#3D7A4A',           // Proceed
           'warning': '#E85D00',           // Signal Orange
           'error': '#CC3333',             // Stop
+          // Square corners everywhere
+          '--rounded-box': '0',
+          '--rounded-btn': '0',
+          '--rounded-badge': '0',
         }
       }
     ]

@@ -1,0 +1,99 @@
+---
+import { company } from "@data/company"
+import { products } from "@data/products"
+import Layout from "@layouts/page";
+import PageHero from "@components/PageHero";
+import Objections from "@components/sections/Objections";
+import CtaBand from "@components/sections/CtaBand";
+
+const beliefs = [
+	{ title: 'Working software beats a slide deck', body: 'The fastest way to understand a problem is to put a working version in front of the people who have it. So that\'s the first thing we make.' },
+	{ title: 'Start small, find out fast', body: 'It\'s better to learn an idea doesn\'t work in week one than in month six. We set projects up so that\'s possible.' },
+	{ title: 'Price the result, not the hours', body: 'Hourly billing rewards the slow way. We agree on a number for a result, and going faster is our upside, not your risk.' },
+	{ title: 'Say so when it isn\'t AI', body: 'A lot of problems want a form, a spreadsheet or a phone call. We\'ll tell you when yours is one of them.' },
+]
+
+const facts = [
+	{ k: 'Legal name', v: company.legal },
+	{ k: 'Headquarters', v: `${company.street}, ${company.city}` },
+	{ k: 'Phone', v: company.phone },
+	{ k: 'Shipping software since', v: String(company.since) },
+	{ k: 'Products live', v: String(products.length) },
+	{ k: 'Founder', v: 'Scott Pierce' },
+]
+---
+<Layout title="Company - Left Join Studio" desc="Who Left Join Studio is: a small senior studio that builds AI products and custom software, and has shipped production systems since 1998.">
+	<PageHero label="Company" title="Who are these guys? Fair question." lead="Left Join Studio is a small, senior software studio. We build AI products we run ourselves, and custom tools for companies that need something working soon." />
+
+	<section class="bg-paper">
+		<div class="wrap section grid gap-12 lg:grid-cols-12">
+			<div class="lg:col-span-7 reveal">
+				<p class="eyebrow mb-5">The_short_version</p>
+				<h2 class="h2">We got tired of projects that bill for months and deliver a document.</h2>
+				<div class="mt-8 space-y-5 text-pencil text-[18px] max-w-2xl">
+					<p>The studio was started on one observation: traditional consulting is paid for hours, so it produces hours. Projects stretch, costs climb, and by the time something ships the problem has changed.</p>
+					<p>We work the other way around. You get software you can use early, a price agreed before we begin, and everything we make for you when we're done.</p>
+					<p>Then we started building our own products on the same terms. Jesse answers phones for contractors. The rest take work off a sales rep's, an executive's or a developer's plate. All of them are live, and we use several every day to run this company.</p>
+				</div>
+			</div>
+			<div class="lg:col-span-5 reveal">
+				<div class="border border-charcoal/15">
+					<p class="eyebrow px-6 py-4 border-b border-charcoal/15 bg-whiteboard">On_the_record</p>
+					<dl>
+						{facts.map(f => (
+							<div class="px-6 py-4 border-b border-charcoal/10 last:border-b-0">
+								<dt class="font-mono text-[11px] uppercase tracking-wider text-pencil">{f.k}</dt>
+								<dd class="mt-1 font-medium">{f.v}</dd>
+							</div>
+						))}
+					</dl>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="on-dark bg-term text-paper border-y border-term-line">
+		<div class="wrap section grid gap-12 lg:grid-cols-12 lg:items-center">
+			<div class="lg:col-span-5 reveal">
+				<p class="eyebrow mb-5">About_the_name</p>
+				<h2 class="h2">A left join keeps everything you already have.</h2>
+				<p class="lead mt-6">In a database, a left join takes every row on the left side exactly as it is, and adds whatever matches from the right. Nothing of yours gets dropped.</p>
+				<p class="lead mt-4">That's how we work. Your business keeps running the way it runs. We add the piece that was missing.</p>
+			</div>
+			<div class="lg:col-span-7 reveal">
+				<div class="terminal">
+					<div class="terminal-bar"><i style="background:#FF5F56"></i><i style="background:#FFBD2E"></i><i style="background:#27CA40"></i><span class="ml-2">engagement.sql</span></div>
+<pre class="terminal-body"><span class="t-kw">SELECT</span> your_business.*,
+       studio.working_software
+<span class="t-kw">FROM</span>   your_business
+<span class="t-kw">LEFT JOIN</span> studio
+       <span class="t-kw">ON</span> studio.job = your_business.<span class="t-str">job_nobody_has_time_for</span>;
+
+<span class="t-muted">-- every row you had, plus the one you needed</span>
+<span class="t-prompt">$</span> <span class="cursor"></span></pre>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="bg-paper">
+		<div class="wrap section">
+			<div class="mb-12 max-w-3xl reveal">
+				<p class="eyebrow mb-5">What_we_believe</p>
+				<h2 class="h2">Four rules we don't break.</h2>
+			</div>
+			<div class="rule-grid md:grid-cols-2">
+				{beliefs.map((b, i) => (
+					<div class="p-7 md:p-10 reveal">
+						<p class="font-mono text-[12px] text-signal-ink mb-4">{String(i + 1).padStart(2, '0')}</p>
+						<h3 class="h3">{b.title}</h3>
+						<p class="mt-3 text-pencil">{b.body}</p>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<Objections />
+	<CtaBand />
+</Layout>

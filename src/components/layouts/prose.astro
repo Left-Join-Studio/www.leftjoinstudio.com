@@ -1,11 +1,16 @@
 ---
 import Page from "@layouts/page";
+import PageHero from "@components/PageHero";
 const {title} = Astro.props;
 const {desc} = Astro.props;
 const {img} = Astro.props;
+const {label} = Astro.props;
 ---
-<Page title={title} desc={desc} img={img}>
-    <div class="prose prose-headings:text-charcoal prose-p:text-pencil prose-strong:text-charcoal prose-li:text-pencil md:prose-md lg:prose-lg mx-auto p-6 md:max-w-3xl [&_a:not(.btn)]:text-signal [&_.btn]:no-underline">
-        <slot />
+<Page title={title ? `${title} - Left Join Studio` : undefined} desc={desc} img={img}>
+    {label && <PageHero label={label} title={title} lead={desc} />}
+    <div class="wrap section">
+        <div class="prose prose-headings:text-charcoal prose-headings:tracking-tight prose-p:text-pencil prose-strong:text-charcoal prose-li:text-pencil prose-img:rounded-none lg:prose-lg max-w-3xl [&_a:not(.cta)]:text-signal-ink [&_.cta]:no-underline">
+            <slot />
+        </div>
     </div>
 </Page>

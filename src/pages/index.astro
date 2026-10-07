@@ -1,126 +1,203 @@
 ---
 import { published } from "@data/post"
+import { company, industries, steps } from "@data/company"
+import { flagship, others, jesse } from "@data/products"
 import Layout from "@layouts/page";
 import Preview from "@components/blog/preview";
+import CallSummary from "@components/sections/CallSummary";
+import Objections from "@components/sections/Objections";
+import CtaBand from "@components/sections/CtaBand";
 
 const markdownFiles = await Astro.glob('../content/**/*.md')
 const posts = published(markdownFiles).slice(0, 3);
+
+const stats = [
+	{ n: '24/7', label: 'Jesse picks up nights, weekends and holidays' },
+	{ n: '30 days', label: 'Free to try, with no card on file' },
+	{ n: '3 min', label: 'From the texted link to a number that answers' },
+	{ n: String(company.since), label: 'The year we started shipping production software' },
+]
+
+const jesseSteps = [
+	{ title: 'Call Jesse', body: 'Tell it your trade. It plays your front office so you hear what your customers would get.' },
+	{ title: 'Say yes to the free month', body: 'It texts you a link. No card and no sales call.' },
+	{ title: 'Set up in three minutes', body: 'Pick a local number and give it your website. It reads up on your business and starts answering.' },
+]
 ---
-<Layout title="Left Join Studio - Rapid Prototyping & Data Solutions" desc="We transform ideas into validated prototypes faster than traditional consulting. Value-driven solutions for data products and automation.">
-	<!-- Hero Section -->
-	<section class="px-6 py-16 md:py-24">
-		<div class="max-w-3xl mx-auto text-center">
-			<h1 class="text-4xl md:text-5xl font-bold text-charcoal leading-tight mb-6">
-				Ideas validated<span class="text-signal">.</span><br/>
-				Prototypes delivered<span class="text-signal">.</span>
-			</h1>
-			<p class="text-xl text-pencil mb-8 max-w-2xl mx-auto">
-				We build working prototypes that prove concepts before you commit to full development.
-				Value-driven consulting that respects your time and budget.
-			</p>
-			<div class="flex flex-col sm:flex-row gap-4 justify-center">
-				<a href="/contact" class="btn btn-primary px-8">Start a Conversation</a>
-				<a href="/services" class="btn btn-outline border-charcoal text-charcoal hover:bg-charcoal hover:text-paper px-8">View Services</a>
+<Layout title="Left Join Studio - AI that does real work" desc="Left Join Studio builds AI products that do real work, starting with Jesse, the AI receptionist that answers every job call. Call it now and hear for yourself.">
+
+	<!-- Hero -->
+	<section class="on-dark bg-term text-paper gridlines overflow-hidden">
+		<div class="wrap pt-16 pb-20 md:pt-24 md:pb-28 grid gap-14 lg:grid-cols-12 lg:items-center">
+			<div class="lg:col-span-7">
+				<p class="eyebrow mb-6">Left_Join_Studio, Inc.</p>
+				<h1 class="display">AI that does real work<span class="text-signal">.</span><br/>Starting with your phone<span class="text-signal">.</span></h1>
+				<p class="lead mt-8 max-w-xl">We build AI products for businesses that don't have time to babysit software. Meet Jesse, the receptionist that answers every job call and emails you the details. It's on the line right now.</p>
+				<div class="mt-10 flex flex-col sm:flex-row gap-3">
+					<a href={jesse.phoneHref} class="cta cta-primary plausible-event-name=Call+Jesse plausible-event-where=hero">Call Jesse {jesse.phone}</a>
+					<a href="#products" class="cta cta-ghost">See what we build <span class="arrow">&rarr;</span></a>
+				</div>
+				<p class="mt-6 font-mono text-[13px] text-term-muted flex items-center gap-2">
+					<span class="dot-live"></span> Open now. Two minutes, and nobody tries to sell you anything.
+				</p>
+			</div>
+			<div class="lg:col-span-5 lg:pl-4 pr-[10px]">
+				<CallSummary />
+			</div>
+		</div>
+
+		<!-- Numbers -->
+		<div class="border-t border-term-line">
+			<div class="wrap grid grid-cols-2 lg:grid-cols-4">
+				{stats.map((s, i) => (
+					<div class:list={["py-8 md:py-10 pr-6", i > 0 && "lg:pl-8 lg:border-l border-term-line", i % 2 === 1 && "pl-6 border-l lg:border-l", i > 1 && "border-t lg:border-t-0 border-term-line"]}>
+						<p class="font-mono font-medium text-paper text-[30px] md:text-[40px] leading-none tracking-tight">{s.n}</p>
+						<p class="mt-3 text-[14px] text-term-muted max-w-[22ch]">{s.label}</p>
+					</div>
+				))}
 			</div>
 		</div>
 	</section>
 
-	<!-- Value Props -->
-	<section class="px-6 py-16 bg-whiteboard">
-		<div class="max-w-4xl mx-auto">
-			<h2 class="text-2xl md:text-3xl font-semibold text-charcoal text-center mb-12">
-				Why Left Join Studio<span class="text-signal">?</span>
-			</h2>
-			<div class="grid md:grid-cols-3 gap-8">
-				<div class="text-center">
-					<div class="w-12 h-12 bg-signal/10 rounded-lg flex items-center justify-center mx-auto mb-4">
-						<svg class="w-6 h-6 text-signal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-						</svg>
-					</div>
-					<h3 class="font-semibold text-charcoal mb-2">Rapid Validation</h3>
-					<p class="text-pencil text-sm">Working prototypes in days, not months. Validate ideas before committing resources.</p>
+	<!-- Flagship product -->
+	<section id="products" class="bg-paper">
+		<div class="wrap section">
+			<div class="grid gap-8 md:grid-cols-12 mb-12 md:mb-16">
+				<div class="md:col-span-7 reveal">
+					<p class="eyebrow mb-5">What_we_build</p>
+					<h2 class="h2">Products you can try before you talk to anyone.</h2>
 				</div>
-				<div class="text-center">
-					<div class="w-12 h-12 bg-signal/10 rounded-lg flex items-center justify-center mx-auto mb-4">
-						<svg class="w-6 h-6 text-signal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-						</svg>
+				<p class="lead md:col-span-5 md:pt-10 reveal">If you saw a demo at a show, that was the real thing. Everything here is live, and the fastest way to judge it is to use it.</p>
+			</div>
+
+			<div class="border border-charcoal/15 grid lg:grid-cols-12 reveal">
+				<div class="lg:col-span-7 p-7 md:p-12">
+					<div class="flex flex-wrap items-center gap-2 mb-6">
+						<span class="chip"><span class="dot-live"></span> Live</span>
+						<span class="chip">{flagship.kind}</span>
+						<span class="chip">{flagship.audience}</span>
 					</div>
-					<h3 class="font-semibold text-charcoal mb-2">Value-Based Pricing</h3>
-					<p class="text-pencil text-sm">Pay for results, not hours. Transparent pricing tied to deliverables.</p>
-				</div>
-				<div class="text-center">
-					<div class="w-12 h-12 bg-signal/10 rounded-lg flex items-center justify-center mx-auto mb-4">
-						<svg class="w-6 h-6 text-signal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-						</svg>
+					<h3 class="font-bold tracking-tight text-[clamp(34px,4vw,56px)] leading-none">{flagship.name}<span class="text-signal">.</span></h3>
+					<p class="mt-4 text-[22px] font-semibold tracking-tight">{flagship.line}</p>
+					<p class="mt-4 text-pencil max-w-xl">{flagship.body}</p>
+					<ul class="mt-8 grid sm:grid-cols-2 gap-x-8 gap-y-4 text-[15px]">
+						{flagship.points.map(pt => (
+							<li class="flex gap-3"><span class="font-mono text-signal shrink-0" aria-hidden="true">+</span><span>{pt}</span></li>
+						))}
+					</ul>
+					<div class="mt-10 flex flex-col sm:flex-row gap-3">
+						<a href={jesse.phoneHref} class="cta cta-primary plausible-event-name=Call+Jesse plausible-event-where=product">Call Jesse {jesse.phone}</a>
+						<a href={flagship.url} class="cta cta-ghost">Get a free month <span class="arrow">&rarr;</span></a>
 					</div>
-					<h3 class="font-semibold text-charcoal mb-2">25+ Years Experience</h3>
-					<p class="text-pencil text-sm">Deep expertise in data products, automation, and rapid development.</p>
 				</div>
+				<ol class="lg:col-span-5 bg-whiteboard border-t lg:border-t-0 lg:border-l border-charcoal/15 p-7 md:p-12 flex flex-col justify-center gap-8">
+					{jesseSteps.map((s, i) => (
+						<li class="flex gap-5">
+							<span class="font-mono text-[13px] text-signal-ink pt-1">{String(i + 1).padStart(2, '0')}</span>
+							<div>
+								<p class="font-semibold tracking-tight text-[19px]">{s.title}</p>
+								<p class="text-pencil text-[15px] mt-1">{s.body}</p>
+							</div>
+						</li>
+					))}
+				</ol>
+			</div>
+
+			<div class="mt-10 reveal">
+				<p class="font-mono text-[12px] uppercase tracking-wider text-pencil mb-4">It knows the questions your trade gets</p>
+				<ul class="flex flex-wrap gap-2">
+					{jesse.trades.map(t => <li class="chip !text-charcoal !normal-case !tracking-normal !text-[13px] !py-2 !px-3">{t}</li>)}
+				</ul>
+			</div>
+
+			{others.length > 0 && (
+				<div class="mt-20">
+					<div class="flex items-end justify-between gap-6 mb-6 reveal">
+						<h3 class="h3">Also from the studio</h3>
+						<a href="/products" class="link text-[15px] whitespace-nowrap">All products &rarr;</a>
+					</div>
+					<div class="rule-grid sm:grid-cols-2 lg:grid-cols-3">
+						{others.map(p => (
+							<a href={`/products#${p.slug}`} class="group p-7 flex flex-col hover:!bg-whiteboard transition-colors reveal">
+								<span class="font-mono text-[11px] uppercase tracking-wider text-pencil">{p.kind}</span>
+								<span class="mt-3 font-bold tracking-tight text-[24px]">{p.name}</span>
+								<span class="mt-2 text-pencil text-[15px] flex-grow">{p.line}</span>
+								<span class="mt-6 font-mono text-[12px] uppercase tracking-wider text-signal-ink">{p.audience} <span class="inline-block transition-transform group-hover:translate-x-1">&rarr;</span></span>
+							</a>
+						))}
+					</div>
+				</div>
+			)}
+		</div>
+	</section>
+
+	<!-- Client work -->
+	<section class="bg-whiteboard border-y border-charcoal/10">
+		<div class="wrap section">
+			<div class="grid gap-8 md:grid-cols-12 mb-12 md:mb-16">
+				<div class="md:col-span-7 reveal">
+					<p class="eyebrow mb-5">Built_for_clients</p>
+					<h2 class="h2">The products are new. The experience isn't.</h2>
+				</div>
+				<p class="lead md:col-span-5 md:pt-10 reveal">Before we built our own products we built other people's, in places where a wrong number or a missed record is expensive. We still do.</p>
+			</div>
+			<div class="rule-grid sm:grid-cols-2 lg:grid-cols-4 [&>*]:!bg-whiteboard">
+				{industries.map(ind => (
+					<div class="p-6 md:p-7 reveal">
+						<p class="font-mono text-[11px] uppercase tracking-wider text-pencil"><span class="text-charcoal font-medium">{ind.sector}</span> &middot; {ind.field}</p>
+						<p class="mt-4 text-[15px] text-charcoal">{ind.work}</p>
+					</div>
+				))}
+			</div>
+			<div class="mt-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4 reveal">
+				<p class="font-mono text-[13px] text-pencil">Client names and references on request, under NDA.</p>
+				<a href="/services" class="link text-[15px]">How we work with clients &rarr;</a>
 			</div>
 		</div>
 	</section>
 
-	<!-- Services Overview -->
-	<section class="px-6 py-16">
-		<div class="max-w-4xl mx-auto">
-			<h2 class="text-2xl md:text-3xl font-semibold text-charcoal text-center mb-12">
-				What We Do
-			</h2>
-			<div class="grid md:grid-cols-2 gap-6">
-				<div class="border-2 border-charcoal/10 rounded-lg p-6 hover:border-signal/30 transition-colors">
-					<h3 class="font-semibold text-charcoal mb-2">Project Discovery</h3>
-					<p class="text-pencil text-sm mb-4">Strategic roadmaps, scope planning, and challenge identification before development begins.</p>
-					<a href="/services" class="text-signal text-sm font-medium hover:underline">Learn more &rarr;</a>
-				</div>
-				<div class="border-2 border-charcoal/10 rounded-lg p-6 hover:border-signal/30 transition-colors">
-					<h3 class="font-semibold text-charcoal mb-2">Rapid Prototyping</h3>
-					<p class="text-pencil text-sm mb-4">Working prototypes with core functionality to validate technical feasibility and stakeholder buy-in.</p>
-					<a href="/services" class="text-signal text-sm font-medium hover:underline">Learn more &rarr;</a>
-				</div>
-				<div class="border-2 border-charcoal/10 rounded-lg p-6 hover:border-signal/30 transition-colors">
-					<h3 class="font-semibold text-charcoal mb-2">Automation Solutions</h3>
-					<p class="text-pencil text-sm mb-4">Custom automation to streamline operations, reduce manual work, and improve efficiency.</p>
-					<a href="/services" class="text-signal text-sm font-medium hover:underline">Learn more &rarr;</a>
-				</div>
-				<div class="border-2 border-charcoal/10 rounded-lg p-6 hover:border-signal/30 transition-colors">
-					<h3 class="font-semibold text-charcoal mb-2">Training & Workshops</h3>
-					<p class="text-pencil text-sm mb-4">Hands-on training in data automation, AI tools, and modern development practices.</p>
-					<a href="/training" class="text-signal text-sm font-medium hover:underline">View packages &rarr;</a>
-				</div>
+	<!-- How it starts -->
+	<section class="bg-paper">
+		<div class="wrap section">
+			<div class="mb-12 md:mb-16 max-w-3xl reveal">
+				<p class="eyebrow mb-5">How_it_starts</p>
+				<h2 class="h2">Need something built for your business?</h2>
+				<p class="lead mt-6">You see working software in the first step, before you've committed to anything.</p>
+			</div>
+			<ol class="grid md:grid-cols-3 gap-10 md:gap-0">
+				{steps.map((s, i) => (
+					<li class:list={["reveal md:px-8 first:md:pl-0 last:md:pr-0", i > 0 && "md:border-l border-charcoal/15"]}>
+						<p class="font-mono font-medium text-[44px] leading-none tracking-tight text-charcoal">{String(i + 1).padStart(2, '0')}<span class="text-signal">.</span></p>
+						<h3 class="h3 mt-6">{s.title}</h3>
+						<p class="text-pencil mt-3">{s.body}</p>
+					</li>
+				))}
+			</ol>
+			<div class="mt-12 reveal">
+				<a href="/contact" class="cta cta-primary">Book the free call <span class="arrow">&rarr;</span></a>
 			</div>
 		</div>
 	</section>
+
+	<Objections />
 
 	<!-- Latest News -->
 	{posts.length > 0 && (
-		<section class="px-6 py-16 bg-whiteboard">
-			<div class="max-w-4xl mx-auto">
-				<div class="flex justify-between items-center mb-8">
-					<h2 class="text-2xl md:text-3xl font-semibold text-charcoal">
-						Latest News
-					</h2>
-					<a href="/news" class="text-signal font-medium hover:underline">View all &rarr;</a>
+		<section class="bg-paper">
+			<div class="wrap section">
+				<div class="flex justify-between items-end gap-6 mb-10 reveal">
+					<div>
+						<p class="eyebrow mb-5">From_the_studio</p>
+						<h2 class="h2">How we think.</h2>
+					</div>
+					<a href="/news" class="link text-[15px] whitespace-nowrap">All posts &rarr;</a>
 				</div>
-				<div class="grid md:grid-cols-3 gap-6">
+				<div class:list={["rule-grid md:grid-cols-2", posts.length >= 3 && "lg:grid-cols-3"]}>
 					{posts.map((p) => <Preview post={p} />)}
 				</div>
 			</div>
 		</section>
 	)}
 
-	<!-- CTA Section -->
-	<section class="px-6 py-16">
-		<div class="max-w-2xl mx-auto text-center">
-			<h2 class="text-2xl md:text-3xl font-semibold text-charcoal mb-4">
-				Ready to validate your idea<span class="text-signal">?</span>
-			</h2>
-			<p class="text-pencil mb-8">
-				Let's discuss how we can help you move from concept to working prototype.
-			</p>
-			<a href="/contact" class="btn btn-primary px-8">Get in Touch</a>
-		</div>
-	</section>
+	<CtaBand />
 </Layout>

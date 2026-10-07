@@ -1,47 +1,28 @@
 <form name="contact-us"
       action="https://api.web3forms.com/submit"
-      method="POST">
+      method="POST"
+      class="space-y-6">
 
     <input type="hidden" name="access_key" value="d691df8f-24fd-4e9a-9337-ebed40ded524">
     <input type="hidden" name="redirect" value="https://web3forms.com/success">
     <input type="hidden" name="subject" value="LJS Contact Recieved">
+    <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off">
 
-    <div class="form-control">
-        <label class="label">
-            <span class="label-text">Who are you?</span>
-        </label>
-        <input type="text" 
-               class="input input-bordered w-full max-w-xs"
-               name="name"
-               placeholder="First, Last, or Company Name" 
-               required="" />
+    <div>
+        <label class="field-label" for="cf-name">Your name or company</label>
+        <input id="cf-name" type="text" class="field" name="name" autocomplete="name" required />
     </div>
-    <div class="form-control">
-        <label class="label">
-            <span class="label-text">Email Address</span>
-        </label>
-        <input type="email"
-               class="input input-bordered w-full max-w-xs"
-               name="email"
-               placeholder="email@domain.tld"
-               required="" />
+    <div>
+        <label class="field-label" for="cf-email">Email</label>
+        <input id="cf-email" type="email" class="field" name="email" autocomplete="email" placeholder="you@company.com" required />
     </div>
-    <div class="form-control">
-        <label class="label">
-            <span class="label-text">Message</span>
-        </label>
-        <textarea rows="5"
-                  class="textarea textarea-bordered h-24"
-                  name="message"
-                  placeholder="When can we talk about this amazing idea?" required=""></textarea>
+    <div>
+        <label class="field-label" for="cf-message">What's the job?</label>
+        <textarea id="cf-message" rows="6" class="field" name="message"
+                  placeholder="A sentence or two is plenty. What's eating your team's time?" required></textarea>
     </div>
-
-    <div class="form-control pt-4">
-        <input type="submit" 
-               class="btn"
-               value="Submit" />
-
-        <div data-lastpass-icon-root="" style="position: relative !important; height: 0px !important; width: 0px !important; float: left !important;">
-        </div>
+    <div>
+        <button type="submit" class="cta cta-primary w-full sm:w-auto">Send it <span class="arrow">&rarr;</span></button>
+        <p class="mt-4 text-[14px] text-pencil">A person reads every message. We don't add you to a list.</p>
     </div>
 </form>

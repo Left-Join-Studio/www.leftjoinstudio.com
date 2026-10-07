@@ -1,0 +1,131 @@
+---
+import { industries, steps } from "@data/company"
+import Layout from "@layouts/page";
+import PageHero from "@components/PageHero";
+import Objections from "@components/sections/Objections";
+import CtaBand from "@components/sections/CtaBand";
+
+const services = [
+	{
+		name: 'Project discovery',
+		line: 'Know what to build, and whether to build it, before any code gets written.',
+		points: ['The challenges and openings, named up front', 'A roadmap with a scope and a timeline', 'A straight recommendation, including "don\'t"'],
+	},
+	{
+		name: 'Rapid prototyping',
+		line: 'A working version your people can click, in place of a proposal about one.',
+		points: ['The core features, working', 'Proof it can be built and can scale', 'Documentation and a clean handover'],
+	},
+	{
+		name: 'Automation',
+		line: 'The repetitive job that eats someone\'s week, done by software.',
+		points: ['Built around how your business runs today', 'Connected to the tools you already use', 'Support after it ships'],
+	},
+	{
+		name: 'Training and workshops',
+		line: 'Your team, using AI on your own data, with someone who does it for a living.',
+		points: ['Sessions shaped to your goals', 'Hands-on work, not slides', 'Mentoring that continues after the session'],
+		href: '/training',
+		cta: 'See training packages',
+	},
+]
+
+const terms = [
+	{ title: 'A contract with a company', body: 'You sign with Left Join Studio, Inc. Scope and deliverables are written down before work starts.' },
+	{ title: 'A fixed price, agreed up front', body: 'Projects aren\'t billed by the hour. You know the number before we start, and the first call is free.' },
+	{ title: 'You keep everything', body: 'The code, the docs and the training material are delivered to you, so your team can run it without us.' },
+	{ title: 'Built on common tools', body: 'Nothing exotic and nothing only we understand. Any capable developer can pick it up where we left off.' },
+	{ title: 'Next to your vendor, not instead of them', body: 'If the job needs a large firm for compliance, support or scale, we work in parallel with them.' },
+	{ title: 'Small on purpose', body: 'No account managers and no handoff to a junior. You talk to the person building it, and decisions take a day.' },
+]
+---
+<Layout title="Services - Left Join Studio" desc="Custom AI tools, prototypes, automation and training from Left Join Studio. Fixed price, working software first, and you keep the code.">
+	<PageHero label="Services" title="The same people who build our products can build yours." lead="Bring the job that's stuck. You'll see working software before you see an invoice, and you'll own all of it when we're done.">
+		<div class="mt-10">
+			<a href="/contact" class="cta cta-primary">Book a free first call <span class="arrow">&rarr;</span></a>
+		</div>
+	</PageHero>
+
+	<section class="bg-paper">
+		<div class="wrap section">
+			<div class="mb-12 reveal">
+				<p class="eyebrow mb-5">What_we_do</p>
+				<h2 class="h2 max-w-3xl">Four ways to work with us.</h2>
+			</div>
+			<div class="rule-grid md:grid-cols-2">
+				{services.map((s, i) => (
+					<div class="p-7 md:p-10 flex flex-col reveal">
+						<p class="font-mono text-[12px] text-signal-ink mb-4">{String(i + 1).padStart(2, '0')}</p>
+						<h3 class="font-bold tracking-tight text-[28px] leading-tight">{s.name}</h3>
+						<p class="mt-3 text-pencil">{s.line}</p>
+						<ul class="mt-6 space-y-3 text-[15px] flex-grow">
+							{s.points.map(pt => (
+								<li class="flex gap-3"><span class="font-mono text-signal shrink-0" aria-hidden="true">+</span><span>{pt}</span></li>
+							))}
+						</ul>
+						{s.href && <p class="mt-6"><a href={s.href} class="link text-[15px]">{s.cta} &rarr;</a></p>}
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<section class="bg-whiteboard border-y border-charcoal/10">
+		<div class="wrap section">
+			<div class="grid gap-8 md:grid-cols-12 mb-12 md:mb-16">
+				<div class="md:col-span-7 reveal">
+					<p class="eyebrow mb-5">The_terms</p>
+					<h2 class="h2">What working with us means, in writing.</h2>
+				</div>
+				<p class="lead md:col-span-5 md:pt-10 reveal">A small studio is a risk only if the deal is built like a big one. Ours isn't.</p>
+			</div>
+			<div class="rule-grid sm:grid-cols-2 lg:grid-cols-3 [&>*]:!bg-whiteboard">
+				{terms.map(t => (
+					<div class="p-7 reveal">
+						<h3 class="h3">{t.title}</h3>
+						<p class="mt-3 text-pencil text-[15px]">{t.body}</p>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<section class="bg-paper">
+		<div class="wrap section">
+			<div class="mb-12 max-w-3xl reveal">
+				<p class="eyebrow mb-5">How_it_starts</p>
+				<h2 class="h2">Three steps, and you can stop after any of them.</h2>
+			</div>
+			<ol class="grid md:grid-cols-3 gap-10 md:gap-0">
+				{steps.map((s, i) => (
+					<li class:list={["reveal md:px-8 first:md:pl-0 last:md:pr-0", i > 0 && "md:border-l border-charcoal/15"]}>
+						<p class="font-mono font-medium text-[44px] leading-none tracking-tight">{String(i + 1).padStart(2, '0')}<span class="text-signal">.</span></p>
+						<h3 class="h3 mt-6">{s.title}</h3>
+						<p class="text-pencil mt-3">{s.body}</p>
+					</li>
+				))}
+			</ol>
+		</div>
+	</section>
+
+	<section class="bg-whiteboard border-y border-charcoal/10">
+		<div class="wrap section">
+			<div class="mb-12 max-w-3xl reveal">
+				<p class="eyebrow mb-5">Shipped_for_clients</p>
+				<h2 class="h2">Where our work has run.</h2>
+			</div>
+			<div class="rule-grid sm:grid-cols-2 lg:grid-cols-4 [&>*]:!bg-whiteboard">
+				{industries.map(ind => (
+					<div class="p-6 md:p-7 reveal">
+						<p class="font-mono text-[11px] uppercase tracking-wider text-pencil"><span class="text-charcoal font-medium">{ind.sector}</span> &middot; {ind.field}</p>
+						<p class="mt-4 text-[15px]">{ind.work}</p>
+					</div>
+				))}
+			</div>
+			<p class="mt-8 font-mono text-[13px] text-pencil reveal">Client names and references on request, under NDA.</p>
+		</div>
+	</section>
+
+	<Objections />
+	<CtaBand title="Bring us the job that's stuck." body="Thirty minutes, free. You'll leave knowing whether it's worth building, what it would cost, and whether AI is even the right tool." />
+</Layout>
