@@ -1,0 +1,19 @@
+{
+  // The contact form's backend. The site itself is static files on GitHub Pages, so this
+  // Worker sits on one path of the same domain, the way /jesse does.
+  "name": "ljs-contact",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-05-01",
+  "observability": { "enabled": true },
+  "routes": [
+    { "pattern": "www.leftjoinstudio.com/api/contact", "zone_name": "leftjoinstudio.com" }
+  ],
+  "workers_dev": false,
+  "preview_urls": false,
+  "vars": {
+    // Hostnames a Turnstile token may have been solved on. Never add localhost here;
+    // local dev overrides this in .dev.vars.
+    "TURNSTILE_HOSTNAMES": "www.leftjoinstudio.com"
+  }
+  // Secrets, set with `wrangler secret put`: TURNSTILE_SECRET_KEY, DISCORD_WEBHOOK_URL
+}

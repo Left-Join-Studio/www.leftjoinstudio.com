@@ -27,5 +27,7 @@ export default defineConfig({
   //   }]
   // },
   site: 'https://www.leftjoinstudio.com/',
+  // `wrangler dev` in worker/ answers the contact form while developing
+  vite: { server: { proxy: { '/api/contact': 'http://localhost:8787' } } },
   integrations: [sitemap({ filter: (page) => !page.includes('/thanks') }), tailwind()]
 });

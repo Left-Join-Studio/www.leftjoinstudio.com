@@ -1,21 +1,20 @@
 ---
-// Web3Forms needs an absolute URL to send the visitor back to. The script below swaps in the
-// current origin, so a preview build returns to itself instead of production.
-const thanks = new URL('thanks/', Astro.site).href
+// The form posts to our own Worker (worker/), which checks the Turnstile token before the
+// message goes anywhere. The site key is public, and it lives here because the GitHub
+// Pages build has no .env to read it from. The widget only allows the real domain, so dev
+// uses Cloudflare's always-pass test key.
+const TEST_SITE_KEY = '1x00000000000000000000AA'
+const SITE_KEY = '0x4AAAAAACmZxOxCRxlu8sDn'
+const siteKey = import.meta.env.DEV ? TEST_SITE_KEY : SITE_KEY
 ---
 <form name="contact-us"
-      action="https://api.web3forms.com/submit"
+      action="/api/contact"
       method="POST"
       class="space-y-6">
 
-    <input type="hidden" name="access_key" value="d691df8f-24fd-4e9a-9337-ebed40ded524">
-    <input type="hidden" name="redirect" value={thanks} data-redirect>
-    <input type="hidden" name="subject" value="LJS Contact Received">
-    <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off">
-
     <div>
         <label class="field-label" for="cf-name">Your name or company</label>
-        <input id="cf-name" type="text" class="field" name="name" autocomplete="name" required data-not-blank />
+        <input id="cf-name" type="text" class="field" name="name" autocomplete="name" maxlength="200" required data-not-blank />
     </div>
     <div>
         <label class="field-label" for="cf-email">Email</label>
@@ -23,10 +22,12 @@ const thanks = new URL('thanks/', Astro.site).href
     </div>
     <div>
         <label class="field-label" for="cf-message">What's the job?</label>
-        <textarea id="cf-message" rows="6" class="field" name="message"
+        <textarea id="cf-message" rows="6" class="field" name="message" maxlength="4000"
                   placeholder="A sentence or two is plenty. What's eating your team's time?" required data-not-blank></textarea>
     </div>
+    <div data-turnstile data-sitekey={siteKey}></div>
     <div>
+        <p class="mb-4 text-[15px] font-semibold text-charcoal" role="alert" data-form-error hidden></p>
         <button type="submit" class="cta cta-primary w-full sm:w-auto">Send it <span class="arrow">&rarr;</span></button>
         <p class="mt-4 text-[14px] text-pencil">A person reads every message. We don't add you to a list.</p>
     </div>
@@ -36,8 +37,28 @@ const thanks = new URL('thanks/', Astro.site).href
 (function () {
 	var form = document.forms['contact-us'];
 	if (!form) return;
-	var redirect = form.querySelector('[data-redirect]');
-	if (redirect) redirect.value = location.origin + '/thanks/';
+	var box = form.querySelector('[data-turnstile]');
+	var error = form.querySelector('[data-form-error]');
+	var button = form.querySelector('button[type="submit"]');
+	var widgetId = null;
+
+	// A token is good for one send, so the widget is drawn by hand and its id kept. That
+	// lets a failed send ask for a fresh one.
+	window.ljsTurnstileReady = function () {
+		widgetId = window.turnstile.render(box, {
+			sitekey: box.dataset.sitekey,
+			action: 'contact',
+			theme: 'light',
+			// the full widget is 300px wide, which doesn't fit a 320px phone
+			size: window.innerWidth < 350 ? 'compact' : 'flexible',
+		});
+	};
+
+	function say(text) {
+		error.textContent = text;
+		error.hidden = !text;
+	}
+
 	// `required` lets a field of only spaces through
 	var fields = form.querySelectorAll('[data-not-blank]');
 	function check(el) {
@@ -46,12 +67,37 @@ const thanks = new URL('thanks/', Astro.site).href
 	fields.forEach(function (el) {
 		el.addEventListener('input', function () { check(el); });
 	});
+
 	form.addEventListener('submit', function (e) {
+		e.preventDefault();
 		fields.forEach(check);
 		if (!form.checkValidity()) {
-			e.preventDefault();
 			form.reportValidity();
+			return;
 		}
+		if (widgetId === null || !window.turnstile.getResponse(widgetId)) {
+			say("We're still checking that you're a person. Give it a second and send again.");
+			return;
+		}
+		say('');
+		button.disabled = true;
+		fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } })
+			.then(function (res) {
+				if (res.ok) {
+					location.href = '/thanks/';
+					return;
+				}
+				return res.json().then(
+					function (data) { throw new Error(data.error); },
+					function () { throw new Error(''); }
+				);
+			})
+			.catch(function (err) {
+				say(err.message || "Your message didn't go through. Please try again in a minute.");
+				window.turnstile.reset(widgetId);
+				button.disabled = false;
+			});
 	});
 })();
 </script>
+<script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=ljsTurnstileReady" async defer></script>

@@ -15,6 +15,27 @@ npm run build     # writes dist/
 npm run preview   # serves dist/
 ```
 
+To send the contact form locally, run its Worker next to the dev server. `astro dev` proxies
+`/api/contact` to it. The real Turnstile widget only allows the live domain, so dev uses
+Cloudflare's always-pass test keys.
+
+```sh
+cp worker/.dev.vars.example worker/.dev.vars   # then fill in DISCORD_WEBHOOK_URL
+(cd worker && wrangler dev)                    # http://localhost:8787
+```
+
+The Worker deploys on its own, since GitHub Pages only publishes the static files:
+
+```sh
+cd worker
+wrangler secret put TURNSTILE_SECRET_KEY
+wrangler secret put DISCORD_WEBHOOK_URL
+wrangler deploy
+```
+
+The widget's site key is public and sits in `src/components/utilities/ContactForm.astro`.
+The two secrets are also in the untracked `.env` at the repo root.
+
 ## // WHERE_THINGS_LIVE
 
 | Path | What |
@@ -24,7 +45,8 @@ npm run preview   # serves dist/
 | `src/components/sections/` | Sections shared across pages: the questions grid, the orange call-to-action band, the example call summary. |
 | `src/style/tailwind.css` | The design system: `.eyebrow`, `.cta`, `.panel`, `.panel-grid`, `.chip`, and so on. |
 | `src/content/*.md` | Posts. A file under `drafts/` only shows in dev. |
-| `src/pages/thanks.astro` | Where the contact form lands after sending. Web3Forms redirects there; it's kept out of the sitemap. |
+| `src/pages/thanks.astro` | Where the contact form lands after sending. It's kept out of the sitemap. |
+| `worker/` | The contact form's backend, a Worker on `www.leftjoinstudio.com/api/contact`. It checks the Turnstile token, then forwards the message to a Discord webhook. |
 
 ## // RULES_FOR_COPY
 
