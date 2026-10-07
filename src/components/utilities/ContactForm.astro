@@ -1,16 +1,21 @@
+---
+// Web3Forms needs an absolute URL to send the visitor back to. The script below swaps in the
+// current origin, so a preview build returns to itself instead of production.
+const thanks = new URL('thanks/', Astro.site).href
+---
 <form name="contact-us"
       action="https://api.web3forms.com/submit"
       method="POST"
       class="space-y-6">
 
     <input type="hidden" name="access_key" value="d691df8f-24fd-4e9a-9337-ebed40ded524">
-    <input type="hidden" name="redirect" value="https://web3forms.com/success">
-    <input type="hidden" name="subject" value="LJS Contact Recieved">
+    <input type="hidden" name="redirect" value={thanks} data-redirect>
+    <input type="hidden" name="subject" value="LJS Contact Received">
     <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off">
 
     <div>
         <label class="field-label" for="cf-name">Your name or company</label>
-        <input id="cf-name" type="text" class="field" name="name" autocomplete="name" required />
+        <input id="cf-name" type="text" class="field" name="name" autocomplete="name" required data-not-blank />
     </div>
     <div>
         <label class="field-label" for="cf-email">Email</label>
@@ -19,10 +24,34 @@
     <div>
         <label class="field-label" for="cf-message">What's the job?</label>
         <textarea id="cf-message" rows="6" class="field" name="message"
-                  placeholder="A sentence or two is plenty. What's eating your team's time?" required></textarea>
+                  placeholder="A sentence or two is plenty. What's eating your team's time?" required data-not-blank></textarea>
     </div>
     <div>
         <button type="submit" class="cta cta-primary w-full sm:w-auto">Send it <span class="arrow">&rarr;</span></button>
         <p class="mt-4 text-[14px] text-pencil">A person reads every message. We don't add you to a list.</p>
     </div>
 </form>
+
+<script is:inline>
+(function () {
+	var form = document.forms['contact-us'];
+	if (!form) return;
+	var redirect = form.querySelector('[data-redirect]');
+	if (redirect) redirect.value = location.origin + '/thanks/';
+	// `required` lets a field of only spaces through
+	var fields = form.querySelectorAll('[data-not-blank]');
+	function check(el) {
+		el.setCustomValidity(el.value.trim() ? '' : 'Please fill this in.');
+	}
+	fields.forEach(function (el) {
+		el.addEventListener('input', function () { check(el); });
+	});
+	form.addEventListener('submit', function (e) {
+		fields.forEach(check);
+		if (!form.checkValidity()) {
+			e.preventDefault();
+			form.reportValidity();
+		}
+	});
+})();
+</script>

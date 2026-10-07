@@ -40,6 +40,10 @@
 }
 
 @layer components {
+  /* A grid item defaults to min-width: auto, so one long unbroken line (a code block, a phone
+     number in a button) widens the whole track and the page pans sideways on a phone. */
+  .grid > * { min-width: 0; }
+
   .wrap {
     @apply mx-auto w-full;
     max-width: 1240px;
@@ -168,6 +172,10 @@
     display: block;
   }
   .terminal-body { padding: 18px 20px 20px; overflow-x: auto; }
+  @media (max-width: 479px) {
+    .terminal { font-size: 12px; }
+    .terminal-body { padding: 16px 14px 18px; }
+  }
   .t-prompt { @apply text-signal; }
   .t-muted { @apply text-term-muted; }
   .t-ok { @apply text-term-green; }

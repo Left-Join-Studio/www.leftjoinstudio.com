@@ -24,6 +24,7 @@ npm run preview   # serves dist/
 | `src/components/sections/` | Sections shared across pages: the questions grid, the orange call-to-action band, the example call summary. |
 | `src/style/tailwind.css` | The design system: `.eyebrow`, `.cta`, `.rule-grid`, `.terminal`, and so on. |
 | `src/content/*.md` | Posts. A file under `drafts/` only shows in dev. |
+| `src/pages/thanks.astro` | Where the contact form lands after sending. Web3Forms redirects there; it's kept out of the sitemap. |
 
 ## // RULES_FOR_COPY
 
@@ -33,6 +34,13 @@ npm run preview   # serves dist/
   met. Answer them plainly. Don't hide the size of the company; say why it works in their favor.
 - Plain English first. A contractor reading on a phone at a trade show is the audience, so
   the terminal styling is trim, and the sentences aren't written for developers.
+
+## // CHECK_IT_ON_A_PHONE
+
+Trade-show visitors open the site on a phone, so load every page at 320, 360 and 390px wide
+before shipping. `document.documentElement.scrollWidth` has to equal `clientWidth` on each one.
+The usual cause of a sideways scroll is a grid item holding one long unbroken line;
+`tailwind.css` sets `min-width: 0` on grid children for that reason.
 
 ## // LOOK
 
